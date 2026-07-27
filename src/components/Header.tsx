@@ -14,6 +14,7 @@ export const Header: React.FC<HeaderProps> = ({ lang, onLanguageChange, onOpenDo
   const t = translations[lang];
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [langDropdownOpen, setLangDropdownOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState<string>('home');
   const dropdownRef = useRef<HTMLDivElement>(null);
 
   const languages: { code: Language; label: string; flag: string }[] = [
@@ -35,6 +36,38 @@ export const Header: React.FC<HeaderProps> = ({ lang, onLanguageChange, onOpenDo
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
 
+  // Intersection Observer for Active Section Highlighter
+  useEffect(() => {
+    const sectionIds = ['home', 'schedule', 'news', 'donation', 'transparency'];
+    const handleScroll = () => {
+      const scrollPosition = window.scrollY + 200;
+
+      for (const id of sectionIds) {
+        const element = document.getElementById(id);
+        if (element) {
+          const top = element.offsetTop;
+          const height = element.offsetHeight;
+          if (scrollPosition >= top && scrollPosition < top + height) {
+            setActiveSection(id);
+            break;
+          }
+        }
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    handleScroll();
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const navItems = [
+    { id: 'home', label: t.nav.home },
+    { id: 'schedule', label: t.nav.schedule },
+    { id: 'news', label: t.nav.news },
+    { id: 'donation', label: t.nav.donation },
+    { id: 'transparency', label: t.nav.transparency },
+  ];
+
   return (
     <header className="fixed top-4 left-1/2 -translate-x-1/2 w-[92%] max-w-6xl z-50">
       {/* Floating Curved Pill Container */}
@@ -54,23 +87,24 @@ export const Header: React.FC<HeaderProps> = ({ lang, onLanguageChange, onOpenDo
           </div>
         </a>
 
-        {/* Desktop Floating Navigation Links */}
-        <nav className="hidden lg:flex items-center gap-6 text-xs uppercase font-bold tracking-wider text-[#111827]">
-          <a href="#home" className="hover:text-[#004d2c] transition-colors">
-            {t.nav.home}
-          </a>
-          <a href="#schedule" className="hover:text-[#004d2c] transition-colors">
-            {t.nav.schedule}
-          </a>
-          <a href="#news" className="hover:text-[#004d2c] transition-colors">
-            {t.nav.news}
-          </a>
-          <a href="#donation" className="hover:text-[#d97706] transition-colors text-[#d97706]">
-            {t.nav.donation}
-          </a>
-          <a href="#transparency" className="hover:text-[#004d2c] transition-colors">
-            {t.nav.transparency}
-          </a>
+        {/* Desktop Floating Navigation Links with Active Highlighter Pill */}
+        <nav className="hidden lg:flex items-center gap-1.5 p-1 bg-black/5 rounded-full border border-[#004d2c]/10 text-xs font-bold uppercase tracking-wider text-[#111827]">
+          {navItems.map((item) => {
+            const isActive = activeSection === item.id;
+            return (
+              <a
+                key={item.id}
+                href={`#${item.id}`}
+                className={`px-4 py-1.5 rounded-full transition-all duration-300 relative ${
+                  isActive
+                    ? 'bg-[#004d2c] text-white shadow-md font-extrabold'
+                    : 'text-[#111827]/80 hover:text-[#004d2c] hover:bg-white/60'
+                }`}
+              >
+                {item.label}
+              </a>
+            );
+          })}
         </nav>
 
         {/* Right Actions: Floating Language Dropdown & CTA Button */}
@@ -140,22 +174,24 @@ export const Header: React.FC<HeaderProps> = ({ lang, onLanguageChange, onOpenDo
       {/* Mobile Floating Drawer */}
       {mobileMenuOpen && (
         <div className="lg:hidden mt-2 border-2 border-[#004d2c]/20 bg-[#faf8f5] rounded-3xl p-5 space-y-4 shadow-2xl animate-in fade-in slide-in-from-top-2">
-          <nav className="flex flex-col space-y-3 font-semibold text-xs uppercase tracking-wider text-[#111827]">
-            <a href="#home" onClick={() => setMobileMenuOpen(false)} className="hover:text-[#004d2c]">
-              {t.nav.home}
-            </a>
-            <a href="#schedule" onClick={() => setMobileMenuOpen(false)} className="hover:text-[#004d2c]">
-              {t.nav.schedule}
-            </a>
-            <a href="#news" onClick={() => setMobileMenuOpen(false)} className="hover:text-[#004d2c]">
-              {t.nav.news}
-            </a>
-            <a href="#donation" onClick={() => setMobileMenuOpen(false)} className="hover:text-[#d97706] text-[#d97706]">
-              {t.nav.donation}
-            </a>
-            <a href="#transparency" onClick={() => setMobileMenuOpen(false)} className="hover:text-[#004d2c]">
-              {t.nav.transparency}
-            </a>
+          <nav className="flex flex-col space-y-2 font-semibold text-xs uppercase tracking-wider text-[#111827]">
+            {navItems.map((item) => {
+              const isActive = activeSection === item.id;
+              return (
+                <a
+                  key={item.id}
+                  href={`#${item.id}`}
+                  onClick={() => setMobileMenuOpen(false)}
+                  className={`p-2.5 rounded-xl transition-all ${
+                    isActive
+                      ? 'bg-[#004d2c] text-white font-bold'
+                      : 'hover:bg-[#004d2c]/10 text-[#111827]'
+                  }`}
+                >
+                  {item.label}
+                </a>
+              );
+            })}
           </nav>
 
           <div className="pt-3 border-t border-[#004d2c]/15 flex flex-col gap-3">
