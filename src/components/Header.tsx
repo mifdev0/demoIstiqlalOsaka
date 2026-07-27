@@ -38,7 +38,7 @@ export const Header: React.FC<HeaderProps> = ({ lang, onLanguageChange, onOpenDo
 
   // Intersection Observer for Active Section Highlighter
   useEffect(() => {
-    const sectionIds = ['home', 'schedule', 'news', 'donation', 'transparency'];
+    const sectionIds = ['home', 'news', 'videos', 'donation', 'transparency'];
     const handleScroll = () => {
       const scrollPosition = window.scrollY + 200;
 
@@ -60,10 +60,11 @@ export const Header: React.FC<HeaderProps> = ({ lang, onLanguageChange, onOpenDo
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // Ordered Nav Links: Home, News, Videos (Edukasi), Donation, Transparency (Keuangan)
   const navItems = [
     { id: 'home', label: t.nav.home },
-    { id: 'schedule', label: t.nav.schedule },
     { id: 'news', label: t.nav.news },
+    { id: 'videos', label: t.nav.videos },
     { id: 'donation', label: t.nav.donation },
     { id: 'transparency', label: t.nav.transparency },
   ];

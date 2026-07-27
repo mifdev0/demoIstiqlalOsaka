@@ -122,18 +122,18 @@ export const Footer: React.FC<FooterProps> = ({ lang, onOpenDonateModal }) => {
                 </a>
               </li>
               <li>
-                <a href="#schedule" className="hover:text-[#d97706]">
-                  {t.nav.schedule}
+                <a href="#news" className="hover:text-[#d97706]">
+                  {t.nav.news}
+                </a>
+              </li>
+              <li>
+                <a href="#videos" className="hover:text-[#d97706]">
+                  {t.nav.videos}
                 </a>
               </li>
               <li>
                 <a href="#donation" className="hover:text-[#d97706]">
                   {t.nav.donation}
-                </a>
-              </li>
-              <li>
-                <a href="#news" className="hover:text-[#d97706]">
-                  {t.nav.news}
                 </a>
               </li>
               <li>
