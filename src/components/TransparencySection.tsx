@@ -245,7 +245,7 @@ export const TransparencySection: React.FC<TransparencySectionProps> = ({ lang }
               </span>
             </div>
 
-            {/* Trading Style Line Chart with Natural Tall Proportion (Height 220px) */}
+            {/* Trading Style Line Chart with Stable Non-Glitch Hover Targets */}
             <div className="bg-[#faf8f5] rounded-xl p-5 border border-[#004d2c]/15 relative overflow-hidden">
               {/* Background Grid Lines */}
               <div className="absolute inset-0 flex flex-col justify-between p-6 opacity-15 pointer-events-none">
@@ -255,7 +255,7 @@ export const TransparencySection: React.FC<TransparencySectionProps> = ({ lang }
                 <div className="w-full border-b border-dashed border-[#004d2c]" />
               </div>
 
-              {/* High-Aspect SVG Curve Line Chart */}
+              {/* SVG Curve Line Chart */}
               <div className="relative h-56 w-full">
                 <svg className="w-full h-full overflow-visible" viewBox="0 0 560 200">
                   <defs>
@@ -281,21 +281,24 @@ export const TransparencySection: React.FC<TransparencySectionProps> = ({ lang }
                     strokeLinejoin="round"
                   />
 
-                  {/* Pulsing Trading Data Points */}
+                  {/* Stable Hover Target Data Points (Large Transparent Hit Area prevents glitch) */}
                   {tradingPoints.map((pt, idx) => (
                     <g key={idx} className="group cursor-pointer">
+                      {/* Large invisible hit area for smooth hover */}
+                      <circle cx={pt.x} cy={pt.y} r="18" fill="transparent" />
+                      {/* Visible Node */}
                       <circle
                         cx={pt.x}
                         cy={pt.y}
                         r="6"
-                        className="fill-[#faf8f5] stroke-[#004d2c] stroke-[3.5] group-hover:scale-150 transition-all"
+                        className="fill-[#faf8f5] stroke-[#004d2c] stroke-[3.5] transition-transform duration-200 group-hover:scale-125 pointer-events-none"
                       />
                       {/* Floating Tooltip Label */}
                       <text
                         x={pt.x}
-                        y={pt.y - 12}
+                        y={pt.y - 14}
                         textAnchor="middle"
-                        className="text-[11px] font-mono font-extrabold fill-[#004d2c]"
+                        className="text-[11px] font-mono font-extrabold fill-[#004d2c] pointer-events-none"
                       >
                         ¥{pt.value}M
                       </text>
