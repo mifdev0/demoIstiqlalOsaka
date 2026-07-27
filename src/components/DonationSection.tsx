@@ -14,26 +14,23 @@ export const DonationSection: React.FC<DonationSectionProps> = ({ lang, onOpenDo
   const t = translations[lang];
 
   return (
-    <section id="donation" className="py-24 bg-[#003820] text-white relative overflow-hidden">
-      {/* Background Architectural Motif */}
-      <div className="absolute inset-0 islamic-geo-bg pointer-events-none opacity-10" />
-
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full relative z-10">
+    <section id="donation" className="py-20 bg-[#faf8f5] text-[#111827] relative">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 w-full relative z-10">
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16 space-y-3">
-          <span className="text-[#d97706] font-bold text-xs uppercase tracking-[0.3em] font-inter">
+        <div className="text-center max-w-2xl mx-auto mb-12 space-y-2">
+          <span className="text-[#d97706] font-bold text-xs uppercase tracking-widest font-inter">
             {t.nav.donation}
           </span>
-          <h2 className="font-montserrat font-bold text-4xl sm:text-5xl text-[#faf8f5]">
+          <h2 className="font-montserrat font-bold text-3xl sm:text-4xl text-[#004d2c]">
             {t.donation.title}
           </h2>
-          <p className="text-base text-[#faf8f5]/80 font-inter">
+          <p className="text-sm text-[#111827]/70 font-inter">
             {t.donation.subtitle}
           </p>
         </div>
 
-        {/* Highlighted Initiatives Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-10 mb-16">
+        {/* Compact Clean Initiatives Cards Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
           {mockPrograms.map((program) => {
             const title =
               lang === 'ja'
@@ -61,49 +58,40 @@ export const DonationSection: React.FC<DonationSectionProps> = ({ lang, onOpenDo
             return (
               <div
                 key={program.id}
-                className="bg-white/5 backdrop-blur-md rounded-t-[40px] rounded-b-2xl border-2 border-[#d97706]/30 p-8 lg:p-10 flex flex-col justify-between space-y-8 hover:border-[#d97706] transition-all shadow-2xl"
+                className="bg-white rounded-2xl border border-[#004d2c]/15 p-6 sm:p-7 flex flex-col justify-between space-y-6 shadow-xs hover:shadow-md transition-all"
               >
-                <div className="space-y-6">
-                  <div className="space-y-2">
-                    <span className="text-xs font-bold uppercase tracking-widest text-[#d97706]">
+                <div className="space-y-4">
+                  <div className="space-y-1.5">
+                    <span className="text-[11px] font-bold uppercase tracking-wider text-[#d97706]">
                       Program Infaq Aktif
                     </span>
-                    <h3 className="font-montserrat font-bold text-2xl sm:text-3xl text-white">
+                    <h3 className="font-montserrat font-bold text-xl text-[#111827] leading-snug">
                       {title}
                     </h3>
-                    <p className="text-sm text-[#faf8f5]/80 leading-relaxed font-inter">
+                    <p className="text-xs text-[#111827]/70 leading-relaxed font-inter line-clamp-2">
                       {description}
                     </p>
                   </div>
 
-                  {/* PROMINENT BOLD PROGRESS DISPLAY */}
-                  <div className="space-y-4 pt-4 border-t border-white/10">
-                    <div className="flex items-baseline justify-between">
-                      <div className="flex items-baseline gap-2">
-                        <span className="font-montserrat font-bold text-4xl sm:text-5xl text-[#d97706]">
-                          {percentage}%
-                        </span>
-                        <span className="text-xs uppercase font-bold text-white/70">
-                          {t.donation.collected}
-                        </span>
-                      </div>
-                      <div className="text-right">
-                        <span className="text-xs uppercase font-bold text-white/60 block">Target</span>
-                        <span className="font-montserrat font-bold text-lg text-white">
-                          ¥{program.target_amount_jpy.toLocaleString('ja-JP')}
-                        </span>
-                      </div>
+                  {/* Clean Balanced Progress Bar */}
+                  <div className="space-y-2 pt-2 border-t border-[#004d2c]/10">
+                    <div className="flex justify-between items-center text-xs font-semibold font-inter">
+                      <span className="text-[#004d2c] font-bold">
+                        {t.donation.collected}: {percentage}%
+                      </span>
+                      <span className="text-[#111827]/60">
+                        Target: ¥{program.target_amount_jpy.toLocaleString('ja-JP')}
+                      </span>
                     </div>
 
-                    {/* Thick Bold Progress Bar */}
-                    <div className="h-5 w-full bg-white/10 rounded-full overflow-hidden p-1 border border-white/10">
+                    <div className="h-2.5 w-full bg-[#faf8f5] rounded-full overflow-hidden border border-[#004d2c]/10">
                       <div
-                        className="h-full bg-gradient-to-r from-[#d97706] to-[#c2410c] rounded-full transition-all duration-1000 shadow-[0_0_20px_rgba(217,119,6,0.6)]"
+                        className="h-full bg-[#004d2c] rounded-full transition-all duration-1000"
                         style={{ width: `${percentage}%` }}
                       />
                     </div>
 
-                    <div className="flex justify-between items-center text-xs text-white/70 font-mono pt-1">
+                    <div className="flex justify-between items-center text-xs text-[#111827]/70 font-mono pt-0.5">
                       <span>Terkumpul: ¥{program.current_amount_jpy.toLocaleString('ja-JP')}</span>
                       <span>Rp {program.current_amount_idr.toLocaleString('id-ID')}</span>
                     </div>
@@ -112,9 +100,9 @@ export const DonationSection: React.FC<DonationSectionProps> = ({ lang, onOpenDo
 
                 <button
                   onClick={() => onOpenDonateModal(program)}
-                  className="w-full py-4 bg-[#d97706] hover:bg-[#c2410c] text-white rounded-t-2xl rounded-b-lg font-montserrat text-xs font-bold uppercase tracking-widest transition-all shadow-xl flex items-center justify-center gap-2"
+                  className="w-full py-3 bg-[#004d2c] hover:bg-[#003820] text-white rounded-xl font-montserrat text-xs font-bold uppercase tracking-wider transition-all shadow-xs flex items-center justify-center gap-2"
                 >
-                  <Heart className="w-4 h-4 fill-white/20" />
+                  <Heart className="w-4 h-4 text-[#d97706]" />
                   <span>{t.nav.donateNow}</span>
                 </button>
               </div>
@@ -122,41 +110,41 @@ export const DonationSection: React.FC<DonationSectionProps> = ({ lang, onOpenDo
           })}
         </div>
 
-        {/* Hybrid Payment Strip */}
-        <div className="bg-white/10 backdrop-blur-md rounded-3xl p-8 border border-white/10 grid grid-cols-1 md:grid-cols-3 gap-6">
-          <div className="flex items-center gap-4">
-            <div className="w-12 h-12 rounded-t-2xl rounded-b-sm bg-[#d97706]/20 text-[#d97706] flex items-center justify-center shrink-0">
-              <Landmark className="w-6 h-6" />
+        {/* Minimal Payment Method Badges */}
+        <div className="bg-white rounded-2xl p-6 border border-[#004d2c]/15 grid grid-cols-1 md:grid-cols-3 gap-6 text-left">
+          <div className="flex items-center gap-3">
+            <div className="w-10 h-10 rounded-xl bg-[#004d2c]/10 text-[#004d2c] flex items-center justify-center shrink-0">
+              <Landmark className="w-5 h-5" />
             </div>
             <div>
-              <h4 className="font-bold text-sm text-white font-montserrat">
+              <h4 className="font-bold text-xs text-[#111827] font-montserrat">
                 {t.donation.transferJP}
               </h4>
-              <p className="text-xs text-white/70">Yucho Bank & MUFG Bank Japan</p>
+              <p className="text-[11px] text-[#111827]/60">Yucho Bank & MUFG Bank Japan</p>
             </div>
           </div>
 
-          <div className="flex items-center gap-4">
-            <div className="w-12 h-12 rounded-t-2xl rounded-b-sm bg-[#d97706]/20 text-[#d97706] flex items-center justify-center shrink-0">
-              <QrCode className="w-6 h-6" />
+          <div className="flex items-center gap-3">
+            <div className="w-10 h-10 rounded-xl bg-[#d97706]/10 text-[#d97706] flex items-center justify-center shrink-0">
+              <QrCode className="w-5 h-5" />
             </div>
             <div>
-              <h4 className="font-bold text-sm text-white font-montserrat">
+              <h4 className="font-bold text-xs text-[#111827] font-montserrat">
                 {t.donation.transferID}
               </h4>
-              <p className="text-xs text-white/70">Gopay, OVO, ShopeePay & VA</p>
+              <p className="text-[11px] text-[#111827]/60">Gopay, OVO, ShopeePay & VA</p>
             </div>
           </div>
 
-          <div className="flex items-center gap-4">
-            <div className="w-12 h-12 rounded-t-2xl rounded-b-sm bg-[#d97706]/20 text-[#d97706] flex items-center justify-center shrink-0">
-              <CreditCard className="w-6 h-6" />
+          <div className="flex items-center gap-3">
+            <div className="w-10 h-10 rounded-xl bg-[#004d2c]/10 text-[#004d2c] flex items-center justify-center shrink-0">
+              <CreditCard className="w-5 h-5" />
             </div>
             <div>
-              <h4 className="font-bold text-sm text-white font-montserrat">
+              <h4 className="font-bold text-xs text-[#111827] font-montserrat">
                 Stripe International
               </h4>
-              <p className="text-xs text-white/70">Visa, Mastercard & Int. Card</p>
+              <p className="text-[11px] text-[#111827]/60">Visa, Mastercard & Int. Card</p>
             </div>
           </div>
         </div>
