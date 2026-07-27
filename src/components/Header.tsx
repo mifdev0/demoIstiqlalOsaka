@@ -70,32 +70,32 @@ export const Header: React.FC<HeaderProps> = ({ lang, onLanguageChange, onOpenDo
 
   return (
     <header className="fixed top-4 left-1/2 -translate-x-1/2 w-[92%] max-w-6xl z-50">
-      {/* Floating Curved Pill Container */}
-      <div className="bg-[#faf8f5]/90 backdrop-blur-xl border border-[#004d2c]/20 shadow-xl rounded-full px-5 py-2.5 flex items-center justify-between transition-all">
+      {/* Floating Curved Pill Container with Generous Height & Padding */}
+      <div className="bg-[#faf8f5]/90 backdrop-blur-xl border border-[#004d2c]/20 shadow-xl rounded-full px-6 py-4 flex items-center justify-between transition-all">
         {/* Brand Logo & Name */}
-        <a href="#home" className="flex items-center gap-2.5 group shrink-0">
-          <div className="w-8 h-8 rounded-t-full rounded-b-xs bg-[#004d2c] flex items-center justify-center text-[#faf8f5] font-bold text-xs tracking-tight shadow-sm group-hover:bg-[#003820] transition-colors">
+        <a href="#home" className="flex items-center gap-3 group shrink-0">
+          <div className="w-10 h-10 rounded-t-full rounded-b-xs bg-[#004d2c] flex items-center justify-center text-[#faf8f5] font-bold text-sm tracking-tight shadow-md group-hover:bg-[#003820] transition-colors">
             MIO
           </div>
           <div className="flex flex-col">
-            <span className="font-bold text-sm text-[#004d2c] font-montserrat tracking-tight group-hover:text-[#d97706] transition-colors leading-none">
+            <span className="font-bold text-base text-[#004d2c] font-montserrat tracking-tight group-hover:text-[#d97706] transition-colors leading-none">
               Masjid Istiqlal
             </span>
-            <span className="text-[9px] text-[#d97706] font-semibold tracking-widest uppercase mt-0.5">
+            <span className="text-[10px] text-[#d97706] font-semibold tracking-widest uppercase mt-0.5">
               Osaka • 大阪
             </span>
           </div>
         </a>
 
-        {/* Desktop Clean Navigation Links with Bottom Underline Indicator */}
-        <nav className="hidden lg:flex items-center gap-7 text-xs font-bold uppercase tracking-wider text-[#111827]">
+        {/* Desktop Navigation Links with Spacious Height & Bottom Underline */}
+        <nav className="hidden lg:flex items-center gap-8 text-xs font-bold uppercase tracking-wider text-[#111827]">
           {navItems.map((item) => {
             const isActive = activeSection === item.id;
             return (
               <a
                 key={item.id}
                 href={`#${item.id}`}
-                className={`py-1 transition-all duration-200 relative ${
+                className={`py-2 transition-all duration-200 relative ${
                   isActive
                     ? 'text-[#004d2c] font-extrabold'
                     : 'text-[#111827]/70 hover:text-[#004d2c]'
@@ -111,15 +111,15 @@ export const Header: React.FC<HeaderProps> = ({ lang, onLanguageChange, onOpenDo
           })}
         </nav>
 
-        {/* Right Actions: Floating Language Dropdown & CTA Button */}
-        <div className="hidden sm:flex items-center gap-3 shrink-0">
+        {/* Right Actions: Floating Language Dropdown & Generous CTA Button */}
+        <div className="hidden sm:flex items-center gap-3.5 shrink-0">
           {/* Language Selector Dropdown */}
           <div className="relative" ref={dropdownRef}>
             <button
               onClick={() => setLangDropdownOpen(!langDropdownOpen)}
-              className="flex items-center gap-1.5 px-3 py-1.5 bg-white hover:bg-[#faf8f5] rounded-full border border-[#004d2c]/20 text-xs font-semibold text-[#111827] transition-all shadow-xs"
+              className="flex items-center gap-2 px-3.5 py-2 bg-white hover:bg-[#faf8f5] rounded-full border border-[#004d2c]/20 text-xs font-semibold text-[#111827] transition-all shadow-xs"
             >
-              <Globe className="w-3.5 h-3.5 text-[#004d2c]" />
+              <Globe className="w-4 h-4 text-[#004d2c]" />
               <span className="flex items-center gap-1 font-mono">
                 <span>{currentLang.flag}</span>
                 <span>{currentLang.code.toUpperCase()}</span>
@@ -157,7 +157,7 @@ export const Header: React.FC<HeaderProps> = ({ lang, onLanguageChange, onOpenDo
           {/* Signature Arch CTA Button */}
           <button
             onClick={onOpenDonateModal}
-            className="bg-[#d97706] hover:bg-[#c2410c] text-white px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-widest transition-all shadow-sm hover:scale-[1.02] active:scale-[0.98]"
+            className="bg-[#d97706] hover:bg-[#c2410c] text-white px-6 py-2.5 rounded-full text-xs font-bold uppercase tracking-widest transition-all shadow-md hover:scale-[1.02] active:scale-[0.98]"
           >
             {t.nav.donateNow}
           </button>
@@ -167,7 +167,7 @@ export const Header: React.FC<HeaderProps> = ({ lang, onLanguageChange, onOpenDo
         <div className="flex lg:hidden items-center gap-2">
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="p-1.5 text-[#111827]"
+            className="p-2 text-[#111827]"
             aria-label="Toggle Menu"
           >
             {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
