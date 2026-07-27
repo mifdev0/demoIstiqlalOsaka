@@ -13,27 +13,27 @@ export const Hero: React.FC<HeroProps> = ({ lang, onOpenDonateModal }) => {
 
   return (
     <section id="home" className="relative w-full min-h-[85vh] flex flex-col justify-center pt-24 pb-12 lg:py-16 overflow-hidden bg-[#003820]">
-      {/* Full-bleed Real Photo Background with Increased Opacity for Mobile & Desktop */}
+      {/* Full-bleed Real Photo Background with High Opacity on Mobile */}
       <div className="absolute inset-0 z-0">
         <div
-          className="bg-cover bg-center w-full h-full opacity-65 sm:opacity-55"
+          className="bg-cover bg-center w-full h-full opacity-85 sm:opacity-65"
           style={{
             backgroundImage: `url('/masjid-istiqlal-osaka-hero-new.png')`,
           }}
         />
-        {/* Soft Emerald Gradient Overlay for High Text Readability */}
-        <div className="absolute inset-0 bg-gradient-to-b lg:bg-gradient-to-r from-[#003820]/90 via-[#003820]/75 to-[#003820]/45" />
+        {/* Soft Emerald Gradient Overlay for Text Legibility */}
+        <div className="absolute inset-0 bg-gradient-to-b lg:bg-gradient-to-r from-[#003820]/85 via-[#003820]/65 to-[#003820]/40" />
         <div className="absolute inset-0 japanese-emerald-crest pointer-events-none" />
       </div>
 
       <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 w-full grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
         {/* Left Content - Clean & Direct Typography Without AI Pill Badges */}
         <div className="lg:col-span-8 flex flex-col items-start gap-4 text-left">
-          <h1 className="font-montserrat text-2xl sm:text-4xl lg:text-5xl font-bold text-[#faf8f5] leading-[1.2] tracking-tight drop-shadow-md">
+          <h1 className="font-montserrat text-2xl sm:text-4xl lg:text-5xl font-bold text-[#faf8f5] leading-[1.2] tracking-tight drop-shadow-lg">
             Masjid Istiqlal <span className="text-[#d97706]">Osaka</span>
           </h1>
 
-          <p className="font-inter text-sm sm:text-base text-[#faf8f5]/90 max-w-xl leading-relaxed drop-shadow-sm">
+          <p className="font-inter text-sm sm:text-base text-[#faf8f5]/95 max-w-xl leading-relaxed drop-shadow-md">
             {t.hero.subtitle}
           </p>
 
@@ -41,14 +41,14 @@ export const Hero: React.FC<HeroProps> = ({ lang, onOpenDonateModal }) => {
             {/* Signature Arch Shaped Primary CTA */}
             <button
               onClick={onOpenDonateModal}
-              className="w-full sm:w-auto justify-center bg-[#d97706] hover:bg-[#c2410c] text-white px-6 py-3 rounded-t-2xl rounded-b-md font-montserrat text-xs font-bold uppercase tracking-wider transition-all duration-300 shadow-lg flex items-center hover:-translate-y-0.5 active:translate-y-0"
+              className="w-full sm:w-auto justify-center bg-[#d97706] hover:bg-[#c2410c] text-white px-6 py-3 rounded-t-2xl rounded-b-md font-montserrat text-xs font-bold uppercase tracking-wider transition-all duration-300 shadow-xl flex items-center hover:-translate-y-0.5 active:translate-y-0"
             >
               {t.nav.donateNow}
             </button>
 
             <a
               href="#news"
-              className="w-full sm:w-auto justify-center bg-white/15 backdrop-blur-md text-[#faf8f5] border border-white/30 px-6 py-3 rounded-t-2xl rounded-b-md font-montserrat text-xs font-bold uppercase tracking-wider hover:bg-white hover:text-[#004d2c] transition-all duration-300 flex items-center hover:-translate-y-0.5 active:translate-y-0"
+              className="w-full sm:w-auto justify-center bg-white/20 backdrop-blur-md text-[#faf8f5] border border-white/40 px-6 py-3 rounded-t-2xl rounded-b-md font-montserrat text-xs font-bold uppercase tracking-wider hover:bg-white hover:text-[#004d2c] transition-all duration-300 flex items-center hover:-translate-y-0.5 active:translate-y-0 shadow-md"
             >
               {t.hero.ctaNews}
             </a>
