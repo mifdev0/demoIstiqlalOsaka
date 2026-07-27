@@ -27,15 +27,8 @@ export const Hero: React.FC<HeroProps> = ({ lang, onOpenDonateModal }) => {
       </div>
 
       <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 w-full grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
-        {/* Left Content - Compact Friendly Typography */}
+        {/* Left Content - Clean & Direct Typography Without AI Pill Badges */}
         <div className="lg:col-span-8 flex flex-col items-start gap-4 text-left">
-          {/* Compact Subtle Badge */}
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#d97706]/15 border border-[#d97706]/30 text-[#d97706] text-[11px] font-semibold tracking-wider font-inter">
-            <span className="font-bold">Osaka Islamic Center</span>
-            <span className="w-1.5 h-1.5 rounded-full bg-[#d97706]" />
-            <span>Kansai, Japan</span>
-          </div>
-
           <h1 className="font-montserrat text-2xl sm:text-4xl lg:text-5xl font-bold text-[#faf8f5] leading-[1.2] tracking-tight">
             Masjid Istiqlal <span className="text-[#d97706]">Osaka</span>
           </h1>
@@ -62,7 +55,7 @@ export const Hero: React.FC<HeroProps> = ({ lang, onOpenDonateModal }) => {
           </div>
         </div>
 
-        {/* Right Architectural Arch Frame Feature (Compact Sized) */}
+        {/* Right Architectural Arch Frame Feature */}
         <div className="hidden lg:flex lg:col-span-4 justify-end items-center">
           <div className="relative w-64 h-80 rounded-t-[120px] rounded-b-2xl border-2 border-[#d97706]/40 overflow-hidden shadow-xl">
             <img
@@ -72,9 +65,6 @@ export const Hero: React.FC<HeroProps> = ({ lang, onOpenDonateModal }) => {
             />
             <div className="absolute inset-0 bg-gradient-to-t from-[#003820] via-transparent to-transparent" />
             <div className="absolute bottom-4 left-4 right-4 text-white text-center">
-              <span className="text-[9px] uppercase font-bold tracking-widest text-[#d97706] block">
-                Kansai, Japan
-              </span>
               <span className="font-montserrat font-bold text-xs">
                 Masjid Istiqlal Osaka
               </span>
