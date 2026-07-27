@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import { ArrowRight, Sparkles } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 import { Language, translations } from '@/lib/i18n';
 import { mockArticles, Article } from '@/lib/supabase';
 
@@ -18,10 +18,9 @@ export const NewsPortal: React.FC<NewsPortalProps> = ({ lang }) => {
       {/* Editorial Section Header */}
       <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-4 border-b border-[#004d2c]/15 pb-6">
         <div className="space-y-2">
-          <div className="inline-flex items-center gap-1.5 text-xs font-bold text-[#d97706] uppercase tracking-[0.25em] font-inter">
-            <Sparkles className="w-3.5 h-3.5" />
-            <span>{t.news.subtitle}</span>
-          </div>
+          <span className="text-xs font-bold text-[#d97706] uppercase tracking-[0.25em] font-inter block">
+            {t.news.subtitle}
+          </span>
           <h2 className="font-montserrat font-bold text-3xl sm:text-4xl text-[#004d2c]">
             {t.news.title}
           </h2>
