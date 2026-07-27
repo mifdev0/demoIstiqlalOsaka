@@ -120,7 +120,7 @@ export const TransparencySection: React.FC<TransparencySectionProps> = ({ lang }
               {t.transparency.title}
             </h2>
             <p className="text-xs text-[#111827]/70 font-inter max-w-md">
-              Laporan pertanggungjawaban infaq &amp; kas operasional MIO.
+              {t.transparency.subtitle}
             </p>
           </div>
 
@@ -133,7 +133,7 @@ export const TransparencySection: React.FC<TransparencySectionProps> = ({ lang }
             >
               {Object.entries(monthlyData).map(([key, item]) => (
                 <option key={key} value={key}>
-                  Laporan {item.period}
+                  {item.period}
                 </option>
               ))}
             </select>
@@ -146,23 +146,23 @@ export const TransparencySection: React.FC<TransparencySectionProps> = ({ lang }
           <div className="relative z-10 flex flex-col sm:flex-row sm:items-center justify-between gap-6">
             <div className="space-y-1.5">
               <span className="text-[11px] font-bold text-[#d97706] uppercase tracking-wider font-inter block">
-                Saldo Kas Terakumulasi (MIO Ledger)
+                {t.transparency.accumulatedBalance}
               </span>
               <div className="font-mono font-bold text-3xl sm:text-4xl text-[#faf8f5] tracking-tight">
                 ¥{selectedData.balance_jpy.toLocaleString('ja-JP')}
               </div>
               <p className="text-xs text-white/70 font-inter">
-                Saldo kas operasional &amp; dana wakaf MIO per <strong>{selectedData.period}</strong>.
+                {t.transparency.balanceDesc} <strong>{selectedData.period}</strong>.
               </p>
             </div>
 
             {/* Official PDF Download Button */}
             <button
-              onClick={() => alert(`Mengunduh PDF Laporan Resmi ${selectedData.period}...`)}
+              onClick={() => alert(`PDF Report (${selectedData.period})...`)}
               className="inline-flex items-center justify-center gap-2 bg-[#d97706] hover:bg-[#c2410c] text-white px-5 py-3 rounded-xl font-montserrat font-bold text-xs uppercase tracking-wider shadow-md transition-all shrink-0"
             >
               <Download className="w-3.5 h-3.5" />
-              <span>Unduh PDF</span>
+              <span>{t.transparency.downloadPdf}</span>
             </button>
           </div>
         </div>
@@ -171,7 +171,7 @@ export const TransparencySection: React.FC<TransparencySectionProps> = ({ lang }
         <div className="bg-white rounded-2xl border border-[#004d2c]/15 shadow-xs p-5 sm:p-7 space-y-8">
           <div>
             <h3 className="font-montserrat font-bold text-base text-[#004d2c] mb-4">
-              Rincian Transaksi Kas • {selectedData.period}
+              {t.transparency.monthlyDetails} • {selectedData.period}
             </h3>
 
             {/* Hairline Divider Ledger List */}
@@ -183,7 +183,7 @@ export const TransparencySection: React.FC<TransparencySectionProps> = ({ lang }
                   </div>
                   <div>
                     <span className="font-bold text-[#111827] block">
-                      Total Pemasukan (Infaq, Sedekah &amp; Wakaf)
+                      {t.transparency.totalIncomeDesc}
                     </span>
                   </div>
                 </div>
@@ -204,7 +204,7 @@ export const TransparencySection: React.FC<TransparencySectionProps> = ({ lang }
                   </div>
                   <div>
                     <span className="font-bold text-[#111827] block">
-                      Total Pengeluaran (Operasional &amp; Program)
+                      {t.transparency.totalExpenseDesc}
                     </span>
                   </div>
                 </div>
@@ -221,7 +221,7 @@ export const TransparencySection: React.FC<TransparencySectionProps> = ({ lang }
               <div className="py-3.5 flex flex-col sm:flex-row sm:items-center justify-between gap-1.5 bg-[#faf8f5]/80 px-3 -mx-3 rounded-lg">
                 <div>
                   <span className="font-bold text-[#004d2c] text-sm block font-montserrat">
-                    Surplus Bersih Bulan Ini
+                    {t.transparency.netSurplus}
                   </span>
                 </div>
                 <div className="text-left sm:text-right font-mono">
@@ -238,10 +238,10 @@ export const TransparencySection: React.FC<TransparencySectionProps> = ({ lang }
             <div className="flex items-center justify-between mb-4">
               <h4 className="font-montserrat font-bold text-xs text-[#111827] uppercase tracking-wider flex items-center gap-2">
                 <TrendingUp className="w-4 h-4 text-[#004d2c]" />
-                <span>Grafik Tren Kas 6 Bulan Terakhir (Pergerakan Infaq)</span>
+                <span>{t.transparency.trendTitle}</span>
               </h4>
               <span className="text-[10px] font-semibold text-[#004d2c] bg-[#004d2c]/10 px-2 py-0.5 rounded-md font-mono">
-                Satuan: Juta Yen (JPY)
+                {t.transparency.unitYen}
               </span>
             </div>
 
@@ -281,7 +281,7 @@ export const TransparencySection: React.FC<TransparencySectionProps> = ({ lang }
                     strokeLinejoin="round"
                   />
 
-                  {/* Static Fixed Nodes & Permanent Labels (No Hover Transition) */}
+                  {/* Static Fixed Nodes & Permanent Labels */}
                   {tradingPoints.map((pt, idx) => (
                     <g key={idx}>
                       <circle
@@ -319,7 +319,7 @@ export const TransparencySection: React.FC<TransparencySectionProps> = ({ lang }
           <div className="pt-4 border-t border-[#004d2c]/15 flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs font-inter text-[#111827]/70 bg-[#004d2c]/5 p-3.5 rounded-xl">
             <div className="flex items-center gap-2">
               <ShieldCheck className="w-4 h-4 text-[#004d2c] shrink-0" />
-              <span>Diverifikasi oleh <strong>{selectedData.verified_by}</strong> ({selectedData.verified_date})</span>
+              <span>{t.transparency.verifiedBy} <strong>{selectedData.verified_by}</strong> ({selectedData.verified_date})</span>
             </div>
 
             <a
@@ -328,7 +328,7 @@ export const TransparencySection: React.FC<TransparencySectionProps> = ({ lang }
               rel="noopener noreferrer"
               className="inline-flex items-center gap-1 font-bold text-[#004d2c] hover:text-[#d97706] transition-colors underline shrink-0 text-xs"
             >
-              <span>Salinan Bank Yucho/MUFG</span>
+              <span>{t.transparency.bankProofCopy}</span>
               <ExternalLink className="w-3 h-3" />
             </a>
           </div>

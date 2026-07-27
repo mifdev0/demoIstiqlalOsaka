@@ -84,7 +84,7 @@ export const VisitorsGuide: React.FC<VisitorsGuideProps> = ({ lang }) => {
             <div className="lg:col-span-5 space-y-4">
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#004d2c]/10 text-[#004d2c] font-semibold text-xs uppercase tracking-wider">
                 <MapPin className="w-4 h-4 text-[#d97706]" />
-                <span>Peta Lokasi & Alamat Lengkap</span>
+                <span>{t.visitors.mapBadge}</span>
               </div>
 
               <h3 className="font-montserrat font-bold text-2xl text-[#004d2c]">
@@ -99,7 +99,7 @@ export const VisitorsGuide: React.FC<VisitorsGuideProps> = ({ lang }) => {
                   🇯🇵 〒557-0042 大阪府大阪市西成区中里1-1-21
                 </p>
                 <p className="text-[#111827]/60">
-                  Akses Mudah: 3 Menit Jalan Kaki dari Stasiun Tengachaya / Kishinosato (Kansai Area).
+                  {t.visitors.easyAccess}
                 </p>
               </div>
 
@@ -109,7 +109,7 @@ export const VisitorsGuide: React.FC<VisitorsGuideProps> = ({ lang }) => {
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 bg-[#004d2c] hover:bg-[#003820] text-white px-5 py-3 rounded-t-xl rounded-b-sm font-montserrat font-bold text-xs uppercase tracking-wider shadow-md transition-all mt-2"
               >
-                <span>Buka di Google Maps</span>
+                <span>{t.visitors.openMaps}</span>
                 <ExternalLink className="w-3.5 h-3.5 text-[#d97706]" />
               </a>
             </div>

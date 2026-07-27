@@ -45,6 +45,7 @@ export interface Translation {
     donorName: string;
     donorEmail: string;
     uploadProof: string;
+    activeProgramBadge: string;
   };
   news: {
     title: string;
@@ -67,6 +68,9 @@ export interface Translation {
     dressTitle: string;
     dressDesc: string;
     ctaGuide: string;
+    mapBadge: string;
+    easyAccess: string;
+    openMaps: string;
   };
   transparency: {
     title: string;
@@ -75,6 +79,17 @@ export interface Translation {
     expense: string;
     downloadReport: string;
     verified: string;
+    accumulatedBalance: string;
+    balanceDesc: string;
+    downloadPdf: string;
+    monthlyDetails: string;
+    totalIncomeDesc: string;
+    totalExpenseDesc: string;
+    netSurplus: string;
+    trendTitle: string;
+    unitYen: string;
+    verifiedBy: string;
+    bankProofCopy: string;
   };
   admin: {
     badge: string;
@@ -139,6 +154,7 @@ export const translations: Record<Language, Translation> = {
       donorName: 'Nama Lengkap',
       donorEmail: 'Email / WhatsApp',
       uploadProof: 'Upload Struk / Bukti Transfer',
+      activeProgramBadge: 'Program Infaq Aktif',
     },
     news: {
       title: 'Kabar & Kegiatan Masjid',
@@ -161,6 +177,9 @@ export const translations: Record<Language, Translation> = {
       dressTitle: 'Tata Pakaian',
       dressDesc: 'Disarankan berpakaian sopan & menutup aurat. Kain penutup tersedia di pintu masuk.',
       ctaGuide: 'Baca Panduan Kunjungan Lengkap',
+      mapBadge: 'Peta Lokasi & Alamat Lengkap',
+      easyAccess: 'Akses Mudah: 3 Menit Jalan Kaki dari Stasiun Tengachaya / Kishinosato (Kansai Area).',
+      openMaps: 'Buka di Google Maps',
     },
     transparency: {
       title: 'Laporan Transparansi Keuangan',
@@ -169,6 +188,17 @@ export const translations: Record<Language, Translation> = {
       expense: 'Total Pengeluaran',
       downloadReport: 'Unduh Laporan PDF',
       verified: 'Terverifikasi Tim Audit',
+      accumulatedBalance: 'Saldo Kas Terakumulasi (MIO Ledger)',
+      balanceDesc: 'Saldo kas operasional & dana wakaf MIO per',
+      downloadPdf: 'Unduh PDF',
+      monthlyDetails: 'Rincian Transaksi Kas',
+      totalIncomeDesc: 'Total Pemasukan (Infaq, Sedekah & Wakaf)',
+      totalExpenseDesc: 'Total Pengeluaran (Operasional & Program)',
+      netSurplus: 'Surplus Bersih Bulan Ini',
+      trendTitle: 'Grafik Tren Kas 6 Bulan Terakhir (Pergerakan Infaq)',
+      unitYen: 'Satuan: Juta Yen (JPY)',
+      verifiedBy: 'Diverifikasi oleh',
+      bankProofCopy: 'Salinan Bank Yucho/MUFG',
     },
     admin: {
       badge: 'Admin Panel Simpel Pengurus MIO',
@@ -231,6 +261,7 @@ export const translations: Record<Language, Translation> = {
       donorName: 'Full Name',
       donorEmail: 'Email / WhatsApp',
       uploadProof: 'Upload Transfer Receipt',
+      activeProgramBadge: 'Active Infaq Program',
     },
     news: {
       title: 'Mosque News & Events',
@@ -253,6 +284,9 @@ export const translations: Record<Language, Translation> = {
       dressTitle: 'Dress Code',
       dressDesc: 'Modest clothing requested. Wraps are available at the entrance.',
       ctaGuide: 'Read Full Visitor Guide',
+      mapBadge: 'Location Map & Full Address',
+      easyAccess: 'Easy Access: 3 Minutes Walk from Tengachaya / Kishinosato Station (Kansai Area).',
+      openMaps: 'Open in Google Maps',
     },
     transparency: {
       title: 'Financial Transparency Reports',
@@ -261,6 +295,17 @@ export const translations: Record<Language, Translation> = {
       expense: 'Total Expenses',
       downloadReport: 'Download PDF Report',
       verified: 'Verified by Audit Team',
+      accumulatedBalance: 'Accumulated Cash Balance (MIO Ledger)',
+      balanceDesc: 'MIO operational cash & wakaf funds balance per',
+      downloadPdf: 'Download PDF',
+      monthlyDetails: 'Cash Transaction Details',
+      totalIncomeDesc: 'Total Income (Infaq, Alms & Wakaf)',
+      totalExpenseDesc: 'Total Expenses (Operations & Programs)',
+      netSurplus: 'Net Surplus This Month',
+      trendTitle: '6-Month Cash Trend Chart (Infaq Flow)',
+      unitYen: 'Unit: Million Yen (JPY)',
+      verifiedBy: 'Verified by',
+      bankProofCopy: 'Yucho/MUFG Bank Copy',
     },
     admin: {
       badge: 'Simple Admin Panel for Committee',
@@ -323,6 +368,7 @@ export const translations: Record<Language, Translation> = {
       donorName: 'お名前',
       donorEmail: 'メールアドレス / 連絡先',
       uploadProof: '振込控え画像のアップロード',
+      activeProgramBadge: '受付中の寄付プログラム',
     },
     news: {
       title: 'モスクからのお知らせ',
@@ -345,6 +391,9 @@ export const translations: Record<Language, Translation> = {
       dressTitle: '服装について',
       dressDesc: '肌の露出を控えた服装でお越しください。入口にて貸出用羽織り物もご用意しています。',
       ctaGuide: '見学ガイドを見る',
+      mapBadge: 'アクセスマップ・詳細住所',
+      easyAccess: 'アクセス：天下茶屋駅・岸里駅より徒歩3分（関西エリア）。',
+      openMaps: 'Googleマップで見る',
     },
     transparency: {
       title: '財務透明性レポート',
@@ -353,10 +402,21 @@ export const translations: Record<Language, Translation> = {
       expense: '支出合計',
       downloadReport: 'PDFレポートのダウンロード',
       verified: '監査チーム検証済み',
+      accumulatedBalance: '累積現金残高 (MIO Ledger)',
+      balanceDesc: 'モスク運営資金およびワカフ基金の合計残高：',
+      downloadPdf: 'PDFをダウンロード',
+      monthlyDetails: '月次収支明細',
+      totalIncomeDesc: '収入合計（寄付金・ワカフ）',
+      totalExpenseDesc: '支出合計（運営費・事業費）',
+      netSurplus: '今月の純余剰金',
+      trendTitle: '過去6ヶ月間の寄付トレンド',
+      unitYen: '単位：百万円 (JPY)',
+      verifiedBy: '検証機関：',
+      bankProofCopy: 'ゆうちょ/MUFG銀行口座の控え',
     },
     admin: {
       badge: 'モスク役員用シンプル管理パネル',
-      title: '専門知識なしでコンテンツと寄付を簡単 me管理',
+      title: '専門知識なしでコンテンツと寄付を簡単管理',
       subtitle: 'ITの専門知識がなくても、数分でお知らせ投稿や寄付プログラムを作成できます。',
       tabNews: 'ニュースを追加',
       tabDonation: '寄付プログラムを作成',
@@ -415,6 +475,7 @@ export const translations: Record<Language, Translation> = {
       donorName: 'الاسم الكامل',
       donorEmail: 'البريد الإلكتروني / الواتساب',
       uploadProof: 'رفع إيصال التحويل',
+      activeProgramBadge: 'حملة التبرع النشطة',
     },
     news: {
       title: 'أخبار وفعاليات المسجد',
@@ -437,6 +498,9 @@ export const translations: Record<Language, Translation> = {
       dressTitle: 'قواعد اللباس',
       dressDesc: 'يُرجى ارتداء ملابس محشمة. تتوفر أغطية مخصصة عند المدخل.',
       ctaGuide: 'قراءة دليل الزوار الكامل',
+      mapBadge: 'خريطة الموقع والعنوان الكامل',
+      easyAccess: 'سهولة الوصول: 3 دقائق سيراً على الأقدام من محطة Tengachaya / Kishinosato (منطقة كانساي).',
+      openMaps: 'فتح في خرائط جوجل',
     },
     transparency: {
       title: 'تقارير الشفافية المالية',
@@ -445,6 +509,17 @@ export const translations: Record<Language, Translation> = {
       expense: 'إجمالي المصروفات',
       downloadReport: 'تحميل التقرير PDF',
       verified: 'معتمد من فريق التدقيق',
+      accumulatedBalance: 'الرصيد النقدي التراكمي (دفتر المسجد)',
+      balanceDesc: 'رصيد الصندوق التشغيلي والأوقاف حتى',
+      downloadPdf: 'تحميل PDF',
+      monthlyDetails: 'تفاصيل المعاملات الشهرية',
+      totalIncomeDesc: 'إجمالي الإيرادات (التبرعات والصدقات والأوقاف)',
+      totalExpenseDesc: 'إجمالي المصروفات (التشغيل والبرامج)',
+      netSurplus: 'الفائض الصافي لهذا الشهر',
+      trendTitle: 'مخطط حركة التبرعات خلال 6 أشهر',
+      unitYen: 'الوحدة: مليون ين ياباني (JPY)',
+      verifiedBy: 'تم التحقق بواسطة',
+      bankProofCopy: 'نسخة كشف بنك Yucho/MUFG',
     },
     admin: {
       badge: 'لوحة تحكم بسيطة لإدارة المسجد',
