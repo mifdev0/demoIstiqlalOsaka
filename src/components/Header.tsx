@@ -71,37 +71,41 @@ export const Header: React.FC<HeaderProps> = ({ lang, onLanguageChange, onOpenDo
   return (
     <header className="fixed top-4 left-1/2 -translate-x-1/2 w-[92%] max-w-6xl z-50">
       {/* Floating Curved Pill Container */}
-      <div className="bg-[#faf8f5]/90 backdrop-blur-xl border-2 border-[#004d2c]/20 shadow-2xl rounded-full px-5 py-3 flex items-center justify-between transition-all">
+      <div className="bg-[#faf8f5]/90 backdrop-blur-xl border border-[#004d2c]/20 shadow-xl rounded-full px-5 py-2.5 flex items-center justify-between transition-all">
         {/* Brand Logo & Name */}
         <a href="#home" className="flex items-center gap-2.5 group shrink-0">
-          <div className="w-9 h-9 rounded-t-full rounded-b-md bg-[#004d2c] flex items-center justify-center text-[#faf8f5] font-bold text-sm tracking-tight shadow-md group-hover:bg-[#003820] transition-colors">
+          <div className="w-8 h-8 rounded-t-full rounded-b-xs bg-[#004d2c] flex items-center justify-center text-[#faf8f5] font-bold text-xs tracking-tight shadow-sm group-hover:bg-[#003820] transition-colors">
             MIO
           </div>
           <div className="flex flex-col">
-            <span className="font-bold text-base text-[#004d2c] font-montserrat tracking-tight group-hover:text-[#d97706] transition-colors leading-none">
+            <span className="font-bold text-sm text-[#004d2c] font-montserrat tracking-tight group-hover:text-[#d97706] transition-colors leading-none">
               Masjid Istiqlal
             </span>
-            <span className="text-[10px] text-[#d97706] font-semibold tracking-widest uppercase mt-0.5">
+            <span className="text-[9px] text-[#d97706] font-semibold tracking-widest uppercase mt-0.5">
               Osaka • 大阪
             </span>
           </div>
         </a>
 
-        {/* Desktop Floating Navigation Links with Active Highlighter Pill */}
-        <nav className="hidden lg:flex items-center gap-1.5 p-1 bg-black/5 rounded-full border border-[#004d2c]/10 text-xs font-bold uppercase tracking-wider text-[#111827]">
+        {/* Desktop Clean Navigation Links with Bottom Underline Indicator */}
+        <nav className="hidden lg:flex items-center gap-7 text-xs font-bold uppercase tracking-wider text-[#111827]">
           {navItems.map((item) => {
             const isActive = activeSection === item.id;
             return (
               <a
                 key={item.id}
                 href={`#${item.id}`}
-                className={`px-4 py-1.5 rounded-full transition-all duration-300 relative ${
+                className={`py-1 transition-all duration-200 relative ${
                   isActive
-                    ? 'bg-[#004d2c] text-white shadow-md font-extrabold'
-                    : 'text-[#111827]/80 hover:text-[#004d2c] hover:bg-white/60'
+                    ? 'text-[#004d2c] font-extrabold'
+                    : 'text-[#111827]/70 hover:text-[#004d2c]'
                 }`}
               >
                 {item.label}
+                {/* Active Section Underline Indicator */}
+                {isActive && (
+                  <span className="absolute bottom-0 left-0 right-0 h-0.5 bg-[#004d2c] rounded-full animate-in fade-in duration-200" />
+                )}
               </a>
             );
           })}
@@ -153,7 +157,7 @@ export const Header: React.FC<HeaderProps> = ({ lang, onLanguageChange, onOpenDo
           {/* Signature Arch CTA Button */}
           <button
             onClick={onOpenDonateModal}
-            className="bg-[#d97706] hover:bg-[#c2410c] text-white px-5 py-2 rounded-full text-xs font-bold uppercase tracking-widest transition-all shadow-md hover:scale-[1.02] active:scale-[0.98]"
+            className="bg-[#d97706] hover:bg-[#c2410c] text-white px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-widest transition-all shadow-sm hover:scale-[1.02] active:scale-[0.98]"
           >
             {t.nav.donateNow}
           </button>

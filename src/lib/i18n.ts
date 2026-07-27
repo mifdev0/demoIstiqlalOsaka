@@ -97,11 +97,11 @@ export const translations: Record<Language, Translation> = {
   id: {
     nav: {
       home: 'Beranda',
-      news: 'Portal Berita',
-      donation: 'Donasi Satu Pintu',
-      schedule: 'Jadwal Shalat',
+      schedule: 'Shalat',
+      news: 'Berita',
+      donation: 'Donasi',
       transparency: 'Transparansi',
-      admin: 'Admin Panel',
+      admin: 'Admin',
       donateNow: 'Donasi Sekarang',
     },
     hero: {
@@ -189,11 +189,11 @@ export const translations: Record<Language, Translation> = {
   en: {
     nav: {
       home: 'Home',
-      news: 'News Portal',
-      donation: 'One-Stop Donation',
-      schedule: 'Prayer Times',
+      schedule: 'Prayer',
+      news: 'News',
+      donation: 'Donate',
       transparency: 'Transparency',
-      admin: 'Admin Panel',
+      admin: 'Admin',
       donateNow: 'Donate Now',
     },
     hero: {
@@ -281,10 +281,10 @@ export const translations: Record<Language, Translation> = {
   ja: {
     nav: {
       home: 'ホーム',
+      schedule: '礼拝',
       news: 'ニュース',
-      donation: '寄付ポータル',
-      schedule: '礼拝時間',
-      transparency: '透明性レポート',
+      donation: '寄付',
+      transparency: '透明性',
       admin: '管理者',
       donateNow: '今すぐ寄付する',
     },
@@ -373,11 +373,11 @@ export const translations: Record<Language, Translation> = {
   ar: {
     nav: {
       home: 'الرئيسية',
+      schedule: 'الصلاة',
       news: 'الأخبار',
-      donation: 'التبرعات',
-      schedule: 'مواقيت الصلاة',
+      donation: 'التبرع',
       transparency: 'الشفافية',
-      admin: 'لوحة التحكم',
+      admin: 'التحكم',
       donateNow: 'تبرع الآن',
     },
     hero: {
@@ -448,15 +448,15 @@ export const translations: Record<Language, Translation> = {
     },
     admin: {
       badge: 'لوحة تحكم بسيطة لإدارة المسجد',
-      title: 'إدارة المحتوى والتبرعات بسهولة دون الحاجة لفريق تقني',
-      subtitle: 'تصميم بسيط وسهل الاستخدام يتيح لإدارة المسجد نشر الأخبار وإنشاء حملات التبرع خلال دقائق.',
+      title: 'إدارة المحتوى والتبرعات بسهولة',
+      subtitle: 'مصممة لتكون بسيطة حتى يتمكن فريق المسجد من نشر الأخبار وإرسال التبرعات بدون مهارات تقنية.',
       tabNews: 'إضافة خبر',
       tabDonation: 'إنشاء حملة تبرع',
-      pubNews: 'نشر الخبر',
+      pubNews: 'نشر مقال جديد',
       pubDonation: 'نشر الحملة',
     },
     footer: {
-      description: 'مسجد استقلال أوساكا بيت للعبادة ومركز ثقافي ومقر لتواصل المسلمين في اليابان.',
+      description: 'مسجد استقلال أوساكا هو ملاذ ومركز ثقافي ومجمع للمسلمين في اليابان.',
       quickLinks: 'روابط سريعة',
       address: 'العنوان: 1-Chome-1-21 Nakazato, Nishinari Ward, Osaka, 557-0042, Japan',
       rights: '© 2026 مسجد استقلال أوساكا. جميع الحقوق محفوظة.',

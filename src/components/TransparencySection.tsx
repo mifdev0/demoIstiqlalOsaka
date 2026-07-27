@@ -93,7 +93,7 @@ export const TransparencySection: React.FC<TransparencySectionProps> = ({ lang }
     { month: 'Jul', income: 4.2, expense: 1.85 },
   ];
 
-  const maxVal = 7.0; // Max Y-axis for chart percentage bar calculation
+  const maxVal = 7.0;
 
   return (
     <section id="transparency" className="py-20 bg-[#faf8f5]">
@@ -109,16 +109,16 @@ export const TransparencySection: React.FC<TransparencySectionProps> = ({ lang }
             </p>
           </div>
 
-          {/* Month Dropdown Selector */}
+          {/* Clean Month Dropdown Selector (No Emoji) */}
           <div className="relative">
             <select
               value={selectedMonthKey}
               onChange={(e) => setSelectedMonthKey(e.target.value)}
-              className="appearance-none bg-white border-2 border-[#004d2c]/20 rounded-xl px-4 py-2.5 pr-10 text-xs font-bold text-[#004d2c] font-montserrat cursor-pointer shadow-xs focus:outline-none focus:ring-2 focus:ring-[#004d2c]"
+              className="appearance-none bg-white border border-[#004d2c]/20 rounded-xl px-4 py-2.5 pr-10 text-xs font-bold text-[#004d2c] font-montserrat cursor-pointer shadow-xs focus:outline-none focus:ring-2 focus:ring-[#004d2c]"
             >
               {Object.entries(monthlyData).map(([key, item]) => (
                 <option key={key} value={key}>
-                  📅 {item.period}
+                  {item.period}
                 </option>
               ))}
             </select>
@@ -162,7 +162,7 @@ export const TransparencySection: React.FC<TransparencySectionProps> = ({ lang }
               </div>
 
               {/* Expense */}
-              <div className="bg-white rounded-2xl p-5 border border-[#004d2c]/15 shadow-xs space-y-1">
+              <div className="bg-[#004d2c]/5 rounded-2xl p-5 border border-[#004d2c]/15 shadow-xs space-y-1">
                 <span className="text-[11px] font-bold text-[#c2410c] uppercase flex items-center gap-1 font-inter">
                   <ArrowDownRight className="w-3.5 h-3.5 text-[#c2410c]" /> {t.transparency.expense}
                 </span>
