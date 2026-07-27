@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { Play, BookOpen } from 'lucide-react';
+import { Play } from 'lucide-react';
 import { Language, translations } from '@/lib/i18n';
 
 interface VideoPortalProps {
@@ -41,13 +41,12 @@ export const VideoPortal: React.FC<VideoPortalProps> = ({ lang }) => {
       <div className="absolute inset-0 japanese-emerald-crest pointer-events-none opacity-40" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 space-y-12">
-        {/* Section Header */}
+        {/* Section Header with Clean Subtitle Badge */}
         <div className="flex flex-col md:flex-row md:items-end justify-between border-b border-[#004d2c]/15 pb-6 gap-4">
           <div className="space-y-2">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#004d2c]/10 text-[#004d2c] text-xs font-bold font-inter uppercase tracking-wider">
-              <BookOpen className="w-3.5 h-3.5 text-[#d97706]" />
-              <span>{t.videos.badge}</span>
-            </div>
+            <span className="text-xs font-bold text-[#d97706] uppercase tracking-[0.25em] font-inter block">
+              {t.videos.badge}
+            </span>
             <h2 className="font-montserrat font-bold text-3xl sm:text-4xl text-[#004d2c]">
               {t.videos.title}
             </h2>
