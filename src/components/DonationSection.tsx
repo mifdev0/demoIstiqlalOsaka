@@ -19,15 +19,15 @@ export const DonationSection: React.FC<DonationSectionProps> = ({ lang, onOpenDo
       <div className="absolute inset-0 japanese-subtle-bg pointer-events-none" />
 
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 w-full relative z-10">
-        {/* Section Header */}
-        <div className="text-center max-w-2xl mx-auto mb-14 space-y-2">
+        {/* Section Header with Centered Balanced 2-Line Layout */}
+        <div className="text-center max-w-xl mx-auto mb-14 space-y-3">
           <span className="text-[#d97706] font-bold text-xs uppercase tracking-widest font-inter">
             {t.nav.donation}
           </span>
-          <h2 className="font-montserrat font-bold text-3xl sm:text-4xl text-[#004d2c]">
-            {t.donation.title}
+          <h2 className="font-montserrat font-bold text-3xl sm:text-4xl text-[#004d2c] leading-tight">
+            Portal Donasi<br />Satu Pintu
           </h2>
-          <p className="text-sm text-[#111827]/70 font-inter">
+          <p className="text-sm text-[#111827]/70 font-inter leading-relaxed">
             {t.donation.subtitle}
           </p>
         </div>

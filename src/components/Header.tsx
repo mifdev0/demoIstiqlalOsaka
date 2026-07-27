@@ -71,12 +71,14 @@ export const Header: React.FC<HeaderProps> = ({ lang, onLanguageChange, onOpenDo
   return (
     <header className="fixed top-4 left-1/2 -translate-x-1/2 w-[92%] max-w-6xl z-50">
       {/* Floating Curved Pill Container */}
-      <div className="bg-[#faf8f5]/90 backdrop-blur-xl border border-[#004d2c]/20 shadow-xl rounded-full px-6 py-4 flex items-center justify-between transition-all">
-        {/* Brand Logo & Name */}
+      <div className="bg-[#faf8f5]/90 backdrop-blur-xl border border-[#004d2c]/20 shadow-xl rounded-full px-6 py-3.5 flex items-center justify-between transition-all">
+        {/* Official MIO Brand Logo Image & Name */}
         <a href="#home" className="flex items-center gap-3 group shrink-0">
-          <div className="w-10 h-10 rounded-t-full rounded-b-xs bg-[#004d2c] flex items-center justify-center text-[#faf8f5] font-bold text-sm tracking-tight shadow-md group-hover:bg-[#003820] transition-colors">
-            MIO
-          </div>
+          <img
+            src="/MIO - HIJAU.png"
+            alt="Masjid Istiqlal Osaka Official Logo"
+            className="w-9 h-9 object-contain group-hover:scale-105 transition-transform"
+          />
           <div className="flex flex-col">
             <span className="font-bold text-base text-[#004d2c] font-montserrat tracking-tight group-hover:text-[#d97706] transition-colors leading-none">
               Masjid Istiqlal

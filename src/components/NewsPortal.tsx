@@ -35,7 +35,7 @@ export const NewsPortal: React.FC<NewsPortalProps> = ({ lang }) => {
         </a>
       </div>
 
-      {/* Editorial Asymmetric Arch Crop Card Grid with Smooth Hover Lift */}
+      {/* Editorial Asymmetric Arch Crop Card Grid with Centered Top Category Badge */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
         {mockArticles.map((article) => {
           const title =
@@ -66,19 +66,24 @@ export const NewsPortal: React.FC<NewsPortalProps> = ({ lang }) => {
               className="group cursor-pointer flex flex-col justify-between hover-lift p-2 rounded-t-[104px] rounded-b-2xl transition-all"
             >
               <div>
-                {/* Mihrab Arch Shape Photo Crop Frame with Graceful Image Fallback */}
+                {/* Mihrab Arch Shape Photo Crop Frame with Centered Top Category Badge */}
                 <div className="relative overflow-hidden rounded-t-[100px] rounded-b-2xl aspect-[4/5] mb-6 shadow-md border-2 border-[#004d2c]/10 group-hover:border-[#004d2c] transition-all bg-[#003820]">
                   <img
                     src={article.featured_image_url}
                     alt={title}
                     onError={(e) => {
-                      (e.target as HTMLImageElement).src = '/masjid-istiqlal-osaka-hero-new.png';
+                      (e.target as HTMLImageElement).src = '/masjid-istiqlal-osaka-hero-new.webp';
                     }}
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                   />
-                  <div className="absolute top-5 left-5 px-3.5 py-1.5 bg-[#004d2c] text-white text-[11px] font-bold rounded-t-xl rounded-b-sm uppercase tracking-wider font-inter shadow-sm">
-                    {categoryLabel}
+
+                  {/* Centered Top Category Badge (Prevents text clipping) */}
+                  <div className="absolute top-4 left-1/2 -translate-x-1/2 z-10">
+                    <span className="px-4 py-1.5 bg-[#004d2c]/90 backdrop-blur-md text-white text-[11px] font-bold rounded-full uppercase tracking-wider font-inter shadow-md border border-white/20 whitespace-nowrap block">
+                      {categoryLabel}
+                    </span>
                   </div>
+
                   {/* Subtle Japanese Hanko Kanji Watermark in Corner */}
                   <div className="absolute bottom-3 right-3 text-white/40 font-bold text-xs font-montserrat tracking-widest pointer-events-none">
                     お知らせ
@@ -114,7 +119,7 @@ export const NewsPortal: React.FC<NewsPortalProps> = ({ lang }) => {
               ✕
             </button>
 
-            <span className="inline-block bg-[#004d2c] text-white text-xs font-bold px-3.5 py-1 rounded-t-xl rounded-b-sm uppercase">
+            <span className="inline-block bg-[#004d2c] text-white text-xs font-bold px-3.5 py-1 rounded-full uppercase">
               {t.news.categories[activeArticle.category as keyof typeof t.news.categories] || activeArticle.category}
             </span>
 
@@ -136,7 +141,7 @@ export const NewsPortal: React.FC<NewsPortalProps> = ({ lang }) => {
               src={activeArticle.featured_image_url}
               alt="Article image"
               onError={(e) => {
-                (e.target as HTMLImageElement).src = '/masjid-istiqlal-osaka-hero-new.png';
+                (e.target as HTMLImageElement).src = '/masjid-istiqlal-osaka-hero-new.webp';
               }}
               className="w-full h-64 object-cover rounded-2xl"
             />
