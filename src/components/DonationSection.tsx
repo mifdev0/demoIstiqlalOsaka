@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { Landmark, QrCode, CreditCard, Heart } from 'lucide-react';
+import { Landmark, QrCode, CreditCard, Heart, ArrowUpRight } from 'lucide-react';
 import { Language, translations } from '@/lib/i18n';
 import { mockPrograms, DonationProgram } from '@/lib/supabase';
 
@@ -14,10 +14,13 @@ export const DonationSection: React.FC<DonationSectionProps> = ({ lang, onOpenDo
   const t = translations[lang];
 
   return (
-    <section id="donation" className="py-20 bg-[#faf8f5] text-[#111827] relative">
+    <section id="donation" className="py-24 bg-[#faf8f5] text-[#111827] relative overflow-hidden">
+      {/* Subtle Japanese Background Accent */}
+      <div className="absolute inset-0 japanese-subtle-bg pointer-events-none" />
+
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 w-full relative z-10">
         {/* Section Header */}
-        <div className="text-center max-w-2xl mx-auto mb-12 space-y-2">
+        <div className="text-center max-w-2xl mx-auto mb-16 space-y-2">
           <span className="text-[#d97706] font-bold text-xs uppercase tracking-widest font-inter">
             {t.nav.donation}
           </span>
@@ -29,8 +32,8 @@ export const DonationSection: React.FC<DonationSectionProps> = ({ lang, onOpenDo
           </p>
         </div>
 
-        {/* Compact Clean Initiatives Cards Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+        {/* Dynamic Initiatives Grid with Featured Photo Banners */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-10 mb-16">
           {mockPrograms.map((program) => {
             const title =
               lang === 'ja'
@@ -58,22 +61,35 @@ export const DonationSection: React.FC<DonationSectionProps> = ({ lang, onOpenDo
             return (
               <div
                 key={program.id}
-                className="bg-white rounded-2xl border border-[#004d2c]/15 p-6 sm:p-7 flex flex-col justify-between space-y-6 shadow-xs hover:shadow-md transition-all"
+                className="bg-white rounded-t-[36px] rounded-b-2xl border border-[#004d2c]/15 shadow-lg overflow-hidden flex flex-col justify-between group hover:border-[#004d2c] transition-all"
               >
-                <div className="space-y-4">
-                  <div className="space-y-1.5">
-                    <span className="text-[11px] font-bold uppercase tracking-wider text-[#d97706]">
+                {/* Photo Banner Header */}
+                <div className="relative h-52 sm:h-56 overflow-hidden">
+                  <img
+                    src={program.banner_url}
+                    alt={title}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
+                  <div className="absolute top-4 left-4">
+                    <span className="bg-[#004d2c] text-white text-[11px] font-bold px-3 py-1 rounded-t-xl rounded-b-sm uppercase tracking-wider shadow-md">
                       Program Infaq Aktif
                     </span>
-                    <h3 className="font-montserrat font-bold text-xl text-[#111827] leading-snug">
+                  </div>
+                  <div className="absolute bottom-4 left-4 right-4 text-white">
+                    <h3 className="font-montserrat font-bold text-lg leading-snug line-clamp-1">
                       {title}
                     </h3>
-                    <p className="text-xs text-[#111827]/70 leading-relaxed font-inter line-clamp-2">
-                      {description}
-                    </p>
                   </div>
+                </div>
 
-                  {/* Clean Balanced Progress Bar */}
+                {/* Body Content */}
+                <div className="p-6 space-y-5 flex-grow">
+                  <p className="text-xs text-[#111827]/80 leading-relaxed font-inter line-clamp-2">
+                    {description}
+                  </p>
+
+                  {/* Progress Line */}
                   <div className="space-y-2 pt-2 border-t border-[#004d2c]/10">
                     <div className="flex justify-between items-center text-xs font-semibold font-inter">
                       <span className="text-[#004d2c] font-bold">
@@ -91,29 +107,32 @@ export const DonationSection: React.FC<DonationSectionProps> = ({ lang, onOpenDo
                       />
                     </div>
 
-                    <div className="flex justify-between items-center text-xs text-[#111827]/70 font-mono pt-0.5">
+                    <div className="flex justify-between items-center text-xs text-[#111827]/70 font-mono pt-1">
                       <span>Terkumpul: ¥{program.current_amount_jpy.toLocaleString('ja-JP')}</span>
                       <span>Rp {program.current_amount_idr.toLocaleString('id-ID')}</span>
                     </div>
                   </div>
                 </div>
 
-                <button
-                  onClick={() => onOpenDonateModal(program)}
-                  className="w-full py-3 bg-[#004d2c] hover:bg-[#003820] text-white rounded-xl font-montserrat text-xs font-bold uppercase tracking-wider transition-all shadow-xs flex items-center justify-center gap-2"
-                >
-                  <Heart className="w-4 h-4 text-[#d97706]" />
-                  <span>{t.nav.donateNow}</span>
-                </button>
+                {/* Card Action */}
+                <div className="p-6 pt-0">
+                  <button
+                    onClick={() => onOpenDonateModal(program)}
+                    className="w-full py-3.5 bg-[#004d2c] hover:bg-[#003820] text-white rounded-t-xl rounded-b-sm font-montserrat text-xs font-bold uppercase tracking-wider transition-all shadow-md flex items-center justify-center gap-2"
+                  >
+                    <Heart className="w-4 h-4 text-[#d97706]" />
+                    <span>{t.nav.donateNow}</span>
+                  </button>
+                </div>
               </div>
             );
           })}
         </div>
 
-        {/* Minimal Payment Method Badges */}
-        <div className="bg-white rounded-2xl p-6 border border-[#004d2c]/15 grid grid-cols-1 md:grid-cols-3 gap-6 text-left">
+        {/* Payment Options Strip */}
+        <div className="bg-white rounded-2xl p-6 border border-[#004d2c]/15 grid grid-cols-1 md:grid-cols-3 gap-6 text-left shadow-sm">
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-xl bg-[#004d2c]/10 text-[#004d2c] flex items-center justify-center shrink-0">
+            <div className="w-10 h-10 rounded-t-xl rounded-b-sm bg-[#004d2c]/10 text-[#004d2c] flex items-center justify-center shrink-0">
               <Landmark className="w-5 h-5" />
             </div>
             <div>
@@ -125,7 +144,7 @@ export const DonationSection: React.FC<DonationSectionProps> = ({ lang, onOpenDo
           </div>
 
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-xl bg-[#d97706]/10 text-[#d97706] flex items-center justify-center shrink-0">
+            <div className="w-10 h-10 rounded-t-xl rounded-b-sm bg-[#d97706]/10 text-[#d97706] flex items-center justify-center shrink-0">
               <QrCode className="w-5 h-5" />
             </div>
             <div>
@@ -137,7 +156,7 @@ export const DonationSection: React.FC<DonationSectionProps> = ({ lang, onOpenDo
           </div>
 
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-xl bg-[#004d2c]/10 text-[#004d2c] flex items-center justify-center shrink-0">
+            <div className="w-10 h-10 rounded-t-xl rounded-b-sm bg-[#004d2c]/10 text-[#004d2c] flex items-center justify-center shrink-0">
               <CreditCard className="w-5 h-5" />
             </div>
             <div>

@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { Heart, MapPin, ShieldCheck } from 'lucide-react';
+import { Heart, MapPin } from 'lucide-react';
 import { Language, translations } from '@/lib/i18n';
 
 interface FooterProps {
@@ -100,11 +100,6 @@ export const Footer: React.FC<FooterProps> = ({ lang, onOpenDonateModal }) => {
         {/* Copyright */}
         <div className="pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-white/50 font-inter gap-4">
           <p>{t.footer.rights}</p>
-          <div className="flex items-center gap-4">
-            <span className="flex items-center gap-1 text-[#d97706]">
-              <ShieldCheck className="w-3.5 h-3.5" /> Supabase & Hybrid Gateway Verified
-            </span>
-          </div>
         </div>
       </div>
     </footer>
