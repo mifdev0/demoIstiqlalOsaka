@@ -12,11 +12,11 @@ export const Hero: React.FC<HeroProps> = ({ lang, onOpenDonateModal }) => {
   const t = translations[lang];
 
   return (
-    <section id="home" className="relative w-full min-h-[92vh] flex flex-col justify-center pt-28 pb-16 lg:py-24 overflow-hidden bg-[#003820]">
+    <section id="home" className="relative w-full min-h-[85vh] flex flex-col justify-center pt-24 pb-12 lg:py-16 overflow-hidden bg-[#003820]">
       {/* Full-bleed Real Photo Background */}
       <div className="absolute inset-0 z-0">
         <div
-          className="bg-cover bg-center w-full h-full opacity-40"
+          className="bg-cover bg-center w-full h-full opacity-35"
           style={{
             backgroundImage: `url('/masjid-istiqlal-osaka-hero-new.png')`,
           }}
@@ -26,67 +26,61 @@ export const Hero: React.FC<HeroProps> = ({ lang, onOpenDonateModal }) => {
         <div className="absolute inset-0 japanese-emerald-crest pointer-events-none" />
       </div>
 
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-        {/* Left Content */}
-        <div className="lg:col-span-8 flex flex-col items-start gap-5 sm:gap-6 text-left">
-          {/* Subtle Clean Badge */}
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#d97706]/15 border border-[#d97706]/30 text-[#d97706] text-xs font-semibold tracking-wider font-inter">
+      <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 w-full grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
+        {/* Left Content - Compact Friendly Typography */}
+        <div className="lg:col-span-8 flex flex-col items-start gap-4 text-left">
+          {/* Compact Subtle Badge */}
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#d97706]/15 border border-[#d97706]/30 text-[#d97706] text-[11px] font-semibold tracking-wider font-inter">
             <span className="font-bold">Osaka Islamic Center</span>
             <span className="w-1.5 h-1.5 rounded-full bg-[#d97706]" />
             <span>Kansai, Japan</span>
           </div>
 
-          <h1 className="font-montserrat text-3xl sm:text-5xl lg:text-7xl font-bold text-[#faf8f5] leading-[1.15] tracking-tight">
+          <h1 className="font-montserrat text-2xl sm:text-4xl lg:text-5xl font-bold text-[#faf8f5] leading-[1.2] tracking-tight">
             Masjid Istiqlal <span className="text-[#d97706]">Osaka</span>
           </h1>
 
-          <p className="font-inter text-base sm:text-xl text-[#faf8f5]/85 max-w-2xl leading-relaxed">
+          <p className="font-inter text-sm sm:text-base text-[#faf8f5]/85 max-w-xl leading-relaxed">
             {t.hero.subtitle}
           </p>
 
-          <div className="pt-2 sm:pt-4 flex flex-col sm:flex-row gap-3 sm:gap-4 w-full sm:w-auto">
-            {/* Signature Arch Shaped Primary CTA with Smooth Hover & Active Transition */}
+          <div className="pt-2 flex flex-col sm:flex-row gap-3 w-full sm:w-auto">
+            {/* Signature Arch Shaped Primary CTA */}
             <button
               onClick={onOpenDonateModal}
-              className="w-full sm:w-auto justify-center bg-[#d97706] hover:bg-[#c2410c] text-white px-8 py-3.5 sm:py-4 rounded-t-3xl rounded-b-xl font-montserrat text-xs font-bold uppercase tracking-widest transition-all duration-300 shadow-2xl flex items-center hover:-translate-y-1 hover:shadow-amber-500/20 active:translate-y-0"
+              className="w-full sm:w-auto justify-center bg-[#d97706] hover:bg-[#c2410c] text-white px-6 py-3 rounded-t-2xl rounded-b-md font-montserrat text-xs font-bold uppercase tracking-wider transition-all duration-300 shadow-lg flex items-center hover:-translate-y-0.5 active:translate-y-0"
             >
               {t.nav.donateNow}
             </button>
 
             <a
               href="#news"
-              className="w-full sm:w-auto justify-center bg-white/10 backdrop-blur-md text-[#faf8f5] border border-white/20 px-8 py-3.5 sm:py-4 rounded-t-3xl rounded-b-xl font-montserrat text-xs font-bold uppercase tracking-widest hover:bg-white hover:text-[#004d2c] transition-all duration-300 flex items-center hover:-translate-y-1 active:translate-y-0"
+              className="w-full sm:w-auto justify-center bg-white/10 backdrop-blur-md text-[#faf8f5] border border-white/20 px-6 py-3 rounded-t-2xl rounded-b-md font-montserrat text-xs font-bold uppercase tracking-wider hover:bg-white hover:text-[#004d2c] transition-all duration-300 flex items-center hover:-translate-y-0.5 active:translate-y-0"
             >
               {t.hero.ctaNews}
             </a>
           </div>
         </div>
 
-        {/* Right Architectural Arch Frame Feature (Static, No Floating Animation) */}
+        {/* Right Architectural Arch Frame Feature (Compact Sized) */}
         <div className="hidden lg:flex lg:col-span-4 justify-end items-center">
-          <div className="relative w-80 h-96 rounded-t-[160px] rounded-b-3xl border-4 border-[#d97706]/50 overflow-hidden shadow-2xl">
+          <div className="relative w-64 h-80 rounded-t-[120px] rounded-b-2xl border-2 border-[#d97706]/40 overflow-hidden shadow-xl">
             <img
               src="/masjid-istiqlal-osaka-hero-new.png"
               alt="Masjid Istiqlal Osaka Mihrab"
               className="w-full h-full object-cover"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-[#003820] via-transparent to-transparent" />
-            <div className="absolute bottom-6 left-6 right-6 text-white text-center">
-              <span className="text-[10px] uppercase font-bold tracking-widest text-[#d97706] block">
+            <div className="absolute bottom-4 left-4 right-4 text-white text-center">
+              <span className="text-[9px] uppercase font-bold tracking-widest text-[#d97706] block">
                 Kansai, Japan
               </span>
-              <span className="font-montserrat font-bold text-sm">
+              <span className="font-montserrat font-bold text-xs">
                 Masjid Istiqlal Osaka
               </span>
             </div>
           </div>
         </div>
-      </div>
-
-      {/* Scroll Down Indicator */}
-      <div className="hidden sm:flex absolute bottom-4 left-1/2 -translate-x-1/2 flex-col items-center gap-2 opacity-60 pointer-events-none">
-        <span className="text-white text-[10px] font-bold uppercase tracking-widest font-inter">Scroll</span>
-        <div className="w-px h-8 bg-gradient-to-b from-[#d97706] to-transparent animate-bounce" />
       </div>
     </section>
   );
