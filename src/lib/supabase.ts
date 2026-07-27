@@ -157,7 +157,7 @@ export const mockArticles: Article[] = [
     id: 'art-3',
     slug: 'kelas-bahasa-jepang-gratis-mio',
     category: 'budaya',
-    featured_image_url: 'https://images.unsplash.com/photo-1528164344705-47542687990d?auto=format&fit=crop&w=800&q=80',
+    featured_image_url: 'https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?auto=format&fit=crop&w=800&q=80',
     title_id: 'Kelas Bahasa Jepang & Adaptasi Budaya untuk Pekerja / Mahasiswa Baru',
     title_en: 'Japanese Language & Cultural Adaptation Class for New Diaspora',
     title_ja: '新来日者のための日本語講座＆生活適応クラス',

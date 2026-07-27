@@ -66,11 +66,14 @@ export const NewsPortal: React.FC<NewsPortalProps> = ({ lang }) => {
               className="group cursor-pointer flex flex-col justify-between hover-lift p-2 rounded-t-[104px] rounded-b-2xl transition-all"
             >
               <div>
-                {/* Mihrab Arch Shape Photo Crop Frame with Japanese Corner Accent */}
-                <div className="relative overflow-hidden rounded-t-[100px] rounded-b-2xl aspect-[4/5] mb-6 shadow-md border-2 border-[#004d2c]/10 group-hover:border-[#004d2c] transition-all">
+                {/* Mihrab Arch Shape Photo Crop Frame with Graceful Image Fallback */}
+                <div className="relative overflow-hidden rounded-t-[100px] rounded-b-2xl aspect-[4/5] mb-6 shadow-md border-2 border-[#004d2c]/10 group-hover:border-[#004d2c] transition-all bg-[#003820]">
                   <img
                     src={article.featured_image_url}
                     alt={title}
+                    onError={(e) => {
+                      (e.target as HTMLImageElement).src = '/masjid-istiqlal-osaka-hero-new.png';
+                    }}
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                   />
                   <div className="absolute top-5 left-5 px-3.5 py-1.5 bg-[#004d2c] text-white text-[11px] font-bold rounded-t-xl rounded-b-sm uppercase tracking-wider font-inter shadow-sm">
@@ -132,6 +135,9 @@ export const NewsPortal: React.FC<NewsPortalProps> = ({ lang }) => {
             <img
               src={activeArticle.featured_image_url}
               alt="Article image"
+              onError={(e) => {
+                (e.target as HTMLImageElement).src = '/masjid-istiqlal-osaka-hero-new.png';
+              }}
               className="w-full h-64 object-cover rounded-2xl"
             />
 
