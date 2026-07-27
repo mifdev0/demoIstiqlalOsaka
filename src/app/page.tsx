@@ -28,7 +28,7 @@ export default function Home() {
   };
 
   return (
-    <div className="min-h-screen bg-[#fdf9e9] text-[#1c1c13] selection:bg-[#008751]/20 selection:text-[#008751]">
+    <div className="min-h-screen bg-[#faf8f5] text-[#111827] selection:bg-[#004d2c]/20 selection:text-[#004d2c]">
       {/* Navbar */}
       <Header
         lang={lang}
@@ -46,9 +46,6 @@ export default function Home() {
         {/* News Portal */}
         <NewsPortal lang={lang} />
 
-        {/* Visitors Guide */}
-        <VisitorsGuide lang={lang} />
-
         {/* Donation Portal */}
         <DonationSection
           lang={lang}
@@ -57,12 +54,15 @@ export default function Home() {
 
         {/* Financial Transparency */}
         <TransparencySection lang={lang} />
+
+        {/* Visitors Guide & Interactive Google Map (Placed right after Financial Transparency and before Footer) */}
+        <VisitorsGuide lang={lang} />
       </main>
 
       {/* Footer */}
       <Footer lang={lang} onOpenDonateModal={() => handleOpenDonateModal()} />
 
-      {/* Multi-Currency Donation Modal */}
+      {/* Interactive Modal */}
       <DonationModal
         isOpen={isDonateModalOpen}
         onClose={() => setIsDonateModalOpen(false)}
