@@ -70,7 +70,7 @@ export const Header: React.FC<HeaderProps> = ({ lang, onLanguageChange, onOpenDo
 
   return (
     <header className="fixed top-4 left-1/2 -translate-x-1/2 w-[92%] max-w-6xl z-50">
-      {/* Floating Curved Pill Container with Generous Height & Padding */}
+      {/* Floating Curved Pill Container */}
       <div className="bg-[#faf8f5]/90 backdrop-blur-xl border border-[#004d2c]/20 shadow-xl rounded-full px-6 py-4 flex items-center justify-between transition-all">
         {/* Brand Logo & Name */}
         <a href="#home" className="flex items-center gap-3 group shrink-0">
@@ -87,7 +87,7 @@ export const Header: React.FC<HeaderProps> = ({ lang, onLanguageChange, onOpenDo
           </div>
         </a>
 
-        {/* Desktop Navigation Links with Spacious Height & Bottom Underline */}
+        {/* Desktop Navigation Links */}
         <nav className="hidden lg:flex items-center gap-8 text-xs font-bold uppercase tracking-wider text-[#111827]">
           {navItems.map((item) => {
             const isActive = activeSection === item.id;
@@ -186,13 +186,13 @@ export const Header: React.FC<HeaderProps> = ({ lang, onLanguageChange, onOpenDo
                   key={item.id}
                   href={`#${item.id}`}
                   onClick={() => setMobileMenuOpen(false)}
-                  className={`p-2.5 rounded-xl transition-all ${
+                  className={`p-2.5 rounded-xl transition-all flex items-center justify-between ${
                     isActive
                       ? 'bg-[#004d2c] text-white font-bold'
                       : 'hover:bg-[#004d2c]/10 text-[#111827]'
                   }`}
                 >
-                  {item.label}
+                  <span>{item.label}</span>
                 </a>
               );
             })}
