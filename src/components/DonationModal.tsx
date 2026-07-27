@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import { X, Heart, Landmark, QrCode, CreditCard, CheckCircle } from 'lucide-react';
+import { X, Heart, QrCode, CheckCircle } from 'lucide-react';
 import { Language, translations } from '@/lib/i18n';
 import { DonationProgram } from '@/lib/supabase';
 
@@ -142,12 +142,13 @@ export const DonationModal: React.FC<DonationModalProps> = ({
                 />
               </div>
 
-              {/* Payment Method Selector */}
+              {/* Payment Method Selector with Real Brand Logos */}
               <div>
                 <label className="block text-xs font-bold text-[#111827]/70 uppercase tracking-wider mb-2">
                   {t.donation.paymentMethod}
                 </label>
                 <div className="space-y-2">
+                  {/* Yucho Bank Option */}
                   <label
                     className={`flex items-center gap-3 p-3.5 rounded-2xl border cursor-pointer transition-all ${
                       paymentType === 'jp_bank'
@@ -162,8 +163,12 @@ export const DonationModal: React.FC<DonationModalProps> = ({
                       onChange={() => setPaymentType('jp_bank')}
                       className="hidden"
                     />
-                    <div className="w-9 h-9 rounded-xl bg-[#004d2c]/10 flex items-center justify-center text-[#004d2c]">
-                      <Landmark className="w-5 h-5" />
+                    <div className="w-12 h-10 rounded-xl bg-white border border-[#004d2c]/20 p-1 flex items-center justify-center shrink-0">
+                      <img
+                        src="/yucho.png"
+                        alt="Yucho Bank Japan"
+                        className="w-full h-full object-contain"
+                      />
                     </div>
                     <div className="flex-grow">
                       <span className="font-bold text-sm text-[#111827] block">
@@ -175,6 +180,7 @@ export const DonationModal: React.FC<DonationModalProps> = ({
                     </div>
                   </label>
 
+                  {/* QRIS Option */}
                   <label
                     className={`flex items-center gap-3 p-3.5 rounded-2xl border cursor-pointer transition-all ${
                       paymentType === 'id_qris'
@@ -189,7 +195,7 @@ export const DonationModal: React.FC<DonationModalProps> = ({
                       onChange={() => setPaymentType('id_qris')}
                       className="hidden"
                     />
-                    <div className="w-9 h-9 rounded-xl bg-[#d97706]/10 flex items-center justify-center text-[#d97706]">
+                    <div className="w-12 h-10 rounded-xl bg-[#d97706]/10 flex items-center justify-center text-[#d97706] shrink-0 border border-[#d97706]/20">
                       <QrCode className="w-5 h-5" />
                     </div>
                     <div className="flex-grow">
@@ -198,6 +204,38 @@ export const DonationModal: React.FC<DonationModalProps> = ({
                       </span>
                       <span className="text-xs text-[#111827]/70">
                         Gopay, OVO, ShopeePay, VA Bank (IDR)
+                      </span>
+                    </div>
+                  </label>
+
+                  {/* Stripe / Visa / Mastercard Option */}
+                  <label
+                    className={`flex items-center gap-3 p-3.5 rounded-2xl border cursor-pointer transition-all ${
+                      paymentType === 'stripe'
+                        ? 'bg-white border-[#004d2c] ring-2 ring-[#004d2c]/20 shadow-sm'
+                        : 'bg-white/60 border-[#004d2c]/15 hover:border-[#004d2c]/40'
+                    }`}
+                  >
+                    <input
+                      type="radio"
+                      name="paymentType"
+                      checked={paymentType === 'stripe'}
+                      onChange={() => setPaymentType('stripe')}
+                      className="hidden"
+                    />
+                    <div className="w-12 h-10 rounded-xl bg-white border border-[#004d2c]/20 p-1 flex items-center justify-center shrink-0">
+                      <img
+                        src="/Stripe-Visa-and-Mastercard-are-close-to-launching-a-joint-stablecoin-platform-800x418.jpg"
+                        alt="Stripe Visa Mastercard"
+                        className="w-full h-full object-contain"
+                      />
+                    </div>
+                    <div className="flex-grow">
+                      <span className="font-bold text-sm text-[#111827] block">
+                        Stripe International Payment
+                      </span>
+                      <span className="text-xs text-[#111827]/70">
+                        Kartu Kredit Visa, Mastercard &amp; Global Card
                       </span>
                     </div>
                   </label>

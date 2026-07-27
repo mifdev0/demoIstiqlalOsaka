@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { Landmark, QrCode, CreditCard, Heart } from 'lucide-react';
+import { QrCode, Heart } from 'lucide-react';
 import { Language, translations } from '@/lib/i18n';
 import { mockPrograms, DonationProgram } from '@/lib/supabase';
 
@@ -69,7 +69,6 @@ export const DonationSection: React.FC<DonationSectionProps> = ({ lang, onOpenDo
                     src={program.banner_url}
                     alt={title}
                     onError={(e) => {
-                      // Fallback to local hero image if network blocks external URL
                       (e.target as HTMLImageElement).src = '/masjid-istiqlal-osaka-hero-new.png';
                     }}
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
@@ -133,41 +132,52 @@ export const DonationSection: React.FC<DonationSectionProps> = ({ lang, onOpenDo
           })}
         </div>
 
-        {/* Payment Options Strip */}
+        {/* Payment Options Strip with Real Brand Logos */}
         <div className="bg-white rounded-2xl p-5 border border-[#004d2c]/15 grid grid-cols-1 md:grid-cols-3 gap-5 text-left shadow-xs">
-          <div className="flex items-center gap-3">
-            <div className="w-9 h-9 rounded-t-xl rounded-b-sm bg-[#004d2c]/10 text-[#004d2c] flex items-center justify-center shrink-0">
-              <Landmark className="w-4 h-4" />
+          {/* Yucho Japan Bank Logo */}
+          <div className="flex items-center gap-3.5">
+            <div className="w-12 h-10 rounded-xl bg-white border border-[#004d2c]/15 p-1 flex items-center justify-center shrink-0 shadow-xs">
+              <img
+                src="/yucho.png"
+                alt="Yucho Bank Japan Logo"
+                className="w-full h-full object-contain rounded-md"
+              />
             </div>
             <div>
               <h4 className="font-bold text-xs text-[#111827] font-montserrat">
                 {t.donation.transferJP}
               </h4>
-              <p className="text-[10px] text-[#111827]/60">Yucho Bank & MUFG Bank Japan</p>
+              <p className="text-[10px] text-[#111827]/60">Yucho Bank (ゆうちょ銀行) &amp; MUFG</p>
             </div>
           </div>
 
-          <div className="flex items-center gap-3">
-            <div className="w-9 h-9 rounded-t-xl rounded-b-sm bg-[#d97706]/10 text-[#d97706] flex items-center justify-center shrink-0">
-              <QrCode className="w-4 h-4" />
+          {/* QRIS / Indonesian Local Payment */}
+          <div className="flex items-center gap-3.5">
+            <div className="w-12 h-10 rounded-xl bg-[#d97706]/10 text-[#d97706] flex items-center justify-center shrink-0 border border-[#d97706]/20">
+              <QrCode className="w-5 h-5" />
             </div>
             <div>
               <h4 className="font-bold text-xs text-[#111827] font-montserrat">
                 {t.donation.transferID}
               </h4>
-              <p className="text-[10px] text-[#111827]/60">Gopay, OVO, ShopeePay & VA</p>
+              <p className="text-[10px] text-[#111827]/60">QRIS, Gopay, OVO, ShopeePay &amp; VA</p>
             </div>
           </div>
 
-          <div className="flex items-center gap-3">
-            <div className="w-9 h-9 rounded-t-xl rounded-b-sm bg-[#004d2c]/10 text-[#004d2c] flex items-center justify-center shrink-0">
-              <CreditCard className="w-4 h-4" />
+          {/* Stripe / Visa / Mastercard Brand Logo */}
+          <div className="flex items-center gap-3.5">
+            <div className="w-12 h-10 rounded-xl bg-white border border-[#004d2c]/15 p-1 flex items-center justify-center shrink-0 shadow-xs">
+              <img
+                src="/Stripe-Visa-and-Mastercard-are-close-to-launching-a-joint-stablecoin-platform-800x418.jpg"
+                alt="Stripe Visa Mastercard Logo"
+                className="w-full h-full object-contain rounded-md"
+              />
             </div>
             <div>
               <h4 className="font-bold text-xs text-[#111827] font-montserrat">
                 Stripe International
               </h4>
-              <p className="text-[10px] text-[#111827]/60">Visa, Mastercard & Int. Card</p>
+              <p className="text-[10px] text-[#111827]/60">Visa, Mastercard &amp; Int. Card</p>
             </div>
           </div>
         </div>
