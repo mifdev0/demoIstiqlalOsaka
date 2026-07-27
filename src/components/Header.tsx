@@ -1,0 +1,199 @@
+'use client';
+
+import React, { useState, useRef, useEffect } from 'react';
+import { Globe, ChevronDown, Menu, X } from 'lucide-react';
+import { Language, translations } from '@/lib/i18n';
+
+interface HeaderProps {
+  lang: Language;
+  onLanguageChange: (lang: Language) => void;
+  onOpenDonateModal: () => void;
+}
+
+export const Header: React.FC<HeaderProps> = ({ lang, onLanguageChange, onOpenDonateModal }) => {
+  const t = translations[lang];
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [langDropdownOpen, setLangDropdownOpen] = useState(false);
+  const dropdownRef = useRef<HTMLDivElement>(null);
+
+  const languages: { code: Language; label: string; flag: string }[] = [
+    { code: 'id', label: 'Bahasa Indonesia', flag: '🇮🇩' },
+    { code: 'en', label: 'English', flag: '🇬🇧' },
+    { code: 'ja', label: '日本語 (Japanese)', flag: '🇯🇵' },
+    { code: 'ar', label: 'العربية (Arabic)', flag: '🇸🇦' },
+  ];
+
+  const currentLang = languages.find((l) => l.code === lang) || languages[0];
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+        setLangDropdownOpen(false);
+      }
+    };
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
+
+  return (
+    <header className="fixed top-4 left-1/2 -translate-x-1/2 w-[92%] max-w-6xl z-50">
+      {/* Floating Curved Pill Container */}
+      <div className="bg-[#faf8f5]/90 backdrop-blur-xl border-2 border-[#004d2c]/20 shadow-2xl rounded-full px-5 py-3 flex items-center justify-between transition-all">
+        {/* Brand Logo & Name */}
+        <a href="#home" className="flex items-center gap-2.5 group shrink-0">
+          <div className="w-9 h-9 rounded-t-full rounded-b-md bg-[#004d2c] flex items-center justify-center text-[#faf8f5] font-bold text-sm tracking-tight shadow-md group-hover:bg-[#003820] transition-colors">
+            MIO
+          </div>
+          <div className="flex flex-col">
+            <span className="font-bold text-base text-[#004d2c] font-montserrat tracking-tight group-hover:text-[#d97706] transition-colors leading-none">
+              Masjid Istiqlal
+            </span>
+            <span className="text-[10px] text-[#d97706] font-semibold tracking-widest uppercase mt-0.5">
+              Osaka • 大阪
+            </span>
+          </div>
+        </a>
+
+        {/* Desktop Floating Navigation Links */}
+        <nav className="hidden lg:flex items-center gap-6 text-xs uppercase font-bold tracking-wider text-[#111827]">
+          <a href="#home" className="hover:text-[#004d2c] transition-colors">
+            {t.nav.home}
+          </a>
+          <a href="#schedule" className="hover:text-[#004d2c] transition-colors">
+            {t.nav.schedule}
+          </a>
+          <a href="#news" className="hover:text-[#004d2c] transition-colors">
+            {t.nav.news}
+          </a>
+          <a href="#donation" className="hover:text-[#d97706] transition-colors text-[#d97706]">
+            {t.nav.donation}
+          </a>
+          <a href="#transparency" className="hover:text-[#004d2c] transition-colors">
+            {t.nav.transparency}
+          </a>
+        </nav>
+
+        {/* Right Actions: Floating Language Dropdown & CTA Button */}
+        <div className="hidden sm:flex items-center gap-3 shrink-0">
+          {/* Language Selector Dropdown */}
+          <div className="relative" ref={dropdownRef}>
+            <button
+              onClick={() => setLangDropdownOpen(!langDropdownOpen)}
+              className="flex items-center gap-1.5 px-3 py-1.5 bg-white hover:bg-[#faf8f5] rounded-full border border-[#004d2c]/20 text-xs font-semibold text-[#111827] transition-all shadow-xs"
+            >
+              <Globe className="w-3.5 h-3.5 text-[#004d2c]" />
+              <span className="flex items-center gap-1 font-mono">
+                <span>{currentLang.flag}</span>
+                <span>{currentLang.code.toUpperCase()}</span>
+              </span>
+              <ChevronDown className={`w-3 h-3 text-[#111827]/70 transition-transform ${langDropdownOpen ? 'rotate-180' : ''}`} />
+            </button>
+
+            {langDropdownOpen && (
+              <div className="absolute right-0 mt-3 w-48 bg-white rounded-2xl border border-[#004d2c]/20 shadow-2xl py-2 z-50 animate-in fade-in slide-in-from-top-2">
+                <div className="px-3 py-1 text-[10px] font-bold text-[#111827]/50 uppercase tracking-wider">
+                  Select Language / Pilih Bahasa
+                </div>
+                {languages.map((l) => (
+                  <button
+                    key={l.code}
+                    onClick={() => {
+                      onLanguageChange(l.code);
+                      setLangDropdownOpen(false);
+                    }}
+                    className={`w-full flex items-center justify-between px-3.5 py-2 text-xs font-semibold text-left transition-colors hover:bg-[#faf8f5] ${
+                      lang === l.code ? 'text-[#004d2c] bg-[#004d2c]/5 font-bold' : 'text-[#111827]'
+                    }`}
+                  >
+                    <span className="flex items-center gap-2">
+                      <span>{l.flag}</span>
+                      <span>{l.label}</span>
+                    </span>
+                    {lang === l.code && <span className="w-1.5 h-1.5 rounded-full bg-[#004d2c]" />}
+                  </button>
+                ))}
+              </div>
+            )}
+          </div>
+
+          {/* Signature Arch CTA Button */}
+          <button
+            onClick={onOpenDonateModal}
+            className="bg-[#d97706] hover:bg-[#c2410c] text-white px-5 py-2 rounded-full text-xs font-bold uppercase tracking-widest transition-all shadow-md hover:scale-[1.02] active:scale-[0.98]"
+          >
+            {t.nav.donateNow}
+          </button>
+        </div>
+
+        {/* Mobile Hamburger */}
+        <div className="flex lg:hidden items-center gap-2">
+          <button
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            className="p-1.5 text-[#111827]"
+            aria-label="Toggle Menu"
+          >
+            {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+          </button>
+        </div>
+      </div>
+
+      {/* Mobile Floating Drawer */}
+      {mobileMenuOpen && (
+        <div className="lg:hidden mt-2 border-2 border-[#004d2c]/20 bg-[#faf8f5] rounded-3xl p-5 space-y-4 shadow-2xl animate-in fade-in slide-in-from-top-2">
+          <nav className="flex flex-col space-y-3 font-semibold text-xs uppercase tracking-wider text-[#111827]">
+            <a href="#home" onClick={() => setMobileMenuOpen(false)} className="hover:text-[#004d2c]">
+              {t.nav.home}
+            </a>
+            <a href="#schedule" onClick={() => setMobileMenuOpen(false)} className="hover:text-[#004d2c]">
+              {t.nav.schedule}
+            </a>
+            <a href="#news" onClick={() => setMobileMenuOpen(false)} className="hover:text-[#004d2c]">
+              {t.nav.news}
+            </a>
+            <a href="#donation" onClick={() => setMobileMenuOpen(false)} className="hover:text-[#d97706] text-[#d97706]">
+              {t.nav.donation}
+            </a>
+            <a href="#transparency" onClick={() => setMobileMenuOpen(false)} className="hover:text-[#004d2c]">
+              {t.nav.transparency}
+            </a>
+          </nav>
+
+          <div className="pt-3 border-t border-[#004d2c]/15 flex flex-col gap-3">
+            <div className="bg-white p-2.5 rounded-2xl border border-[#004d2c]/20 space-y-2">
+              <span className="text-[11px] font-semibold text-[#111827]/70 flex items-center gap-1.5">
+                <Globe className="w-3.5 h-3.5 text-[#004d2c]" /> Select Language
+              </span>
+              <div className="grid grid-cols-2 gap-1.5">
+                {languages.map((l) => (
+                  <button
+                    key={l.code}
+                    onClick={() => {
+                      onLanguageChange(l.code);
+                      setMobileMenuOpen(false);
+                    }}
+                    className={`flex items-center gap-1.5 p-1.5 rounded-xl text-xs font-bold transition-all ${
+                      lang === l.code ? 'bg-[#004d2c] text-white shadow-xs' : 'bg-[#faf8f5] text-[#111827]'
+                    }`}
+                  >
+                    <span>{l.flag}</span>
+                    <span>{l.code.toUpperCase()}</span>
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            <button
+              onClick={() => {
+                setMobileMenuOpen(false);
+                onOpenDonateModal();
+              }}
+              className="w-full bg-[#d97706] text-white py-3 rounded-full text-xs font-bold uppercase tracking-wider shadow-md"
+            >
+              {t.nav.donateNow}
+            </button>
+          </div>
+        </div>
+      )}
+    </header>
+  );
+};
