@@ -43,6 +43,9 @@ export default function Home() {
         {/* Prayer Schedule Bar */}
         <PrayerSchedule lang={lang} />
 
+        {/* Visitors Guide (Can I Visit & Google Maps Location right after Prayer Schedule) */}
+        <VisitorsGuide lang={lang} />
+
         {/* News Portal */}
         <NewsPortal lang={lang} />
 
@@ -54,9 +57,6 @@ export default function Home() {
 
         {/* Financial Transparency */}
         <TransparencySection lang={lang} />
-
-        {/* Visitors Guide & Interactive Google Map (Placed right after Financial Transparency and before Footer) */}
-        <VisitorsGuide lang={lang} />
       </main>
 
       {/* Footer */}
