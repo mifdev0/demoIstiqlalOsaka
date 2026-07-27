@@ -3,8 +3,8 @@
 @theme {
   --color-brand-emerald: #004d2c;
   --color-brand-dark: #003820;
-  --color-brand-[#d97706]: #d97706;
-  --color-brand-[#c2410c]: #c2410c;
+  --color-brand-amber: #d97706;
+  --color-brand-accent: #c2410c;
   --color-brand-cream: #faf8f5;
   --color-brand-charcoal: #111827;
 
@@ -73,7 +73,7 @@ body {
   animation: pulseGlow 4s ease-in-out infinite;
 }
 
-.animate-fade-[#004d2c]-up {
+.animate-fade-in-up {
   animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
