@@ -32,7 +32,7 @@ export const DonationSection: React.FC<DonationSectionProps> = ({ lang, onOpenDo
           </p>
         </div>
 
-        {/* Dynamic Initiatives Grid with Featured Photo Banners & Graceful Fallbacks */}
+        {/* Dynamic Initiatives Grid with Featured Photo Banners & Graceful WebP Fallbacks */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-14">
           {mockPrograms.map((program) => {
             const title =
@@ -63,20 +63,20 @@ export const DonationSection: React.FC<DonationSectionProps> = ({ lang, onOpenDo
                 key={program.id}
                 className="bg-white rounded-t-3xl rounded-b-2xl border border-[#004d2c]/15 shadow-sm overflow-hidden flex flex-col justify-between group hover:border-[#004d2c] hover:shadow-md transition-all"
               >
-                {/* Photo Banner Header with Graceful Image Fallback */}
+                {/* Photo Banner Header with Graceful WebP Image Fallback */}
                 <div className="relative h-48 sm:h-52 overflow-hidden bg-[#003820]">
                   <img
                     src={program.banner_url}
                     alt={title}
                     onError={(e) => {
-                      (e.target as HTMLImageElement).src = '/masjid-istiqlal-osaka-hero-new.png';
+                      (e.target as HTMLImageElement).src = '/masjid-istiqlal-osaka-hero-new.webp';
                     }}
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/20 to-transparent" />
                   <div className="absolute top-4 left-4">
                     <span className="bg-[#004d2c] text-white text-[10px] font-bold px-3 py-1 rounded-t-xl rounded-b-sm uppercase tracking-wider shadow-md font-inter">
-                      Program Infaq Aktif
+                      {t.donation.activeProgramBadge}
                     </span>
                   </div>
                   <div className="absolute bottom-4 left-4 right-4 text-white">
@@ -132,13 +132,13 @@ export const DonationSection: React.FC<DonationSectionProps> = ({ lang, onOpenDo
           })}
         </div>
 
-        {/* Payment Options Strip with Real Brand Logos */}
+        {/* Payment Options Strip with Real WebP Brand Logos */}
         <div className="bg-white rounded-2xl p-5 border border-[#004d2c]/15 grid grid-cols-1 md:grid-cols-3 gap-5 text-left shadow-xs">
-          {/* Yucho Japan Bank Logo */}
+          {/* Yucho Japan Bank WebP Logo */}
           <div className="flex items-center gap-3.5">
             <div className="w-12 h-10 rounded-xl bg-white border border-[#004d2c]/15 p-1 flex items-center justify-center shrink-0 shadow-xs">
               <img
-                src="/yucho.png"
+                src="/yucho.webp"
                 alt="Yucho Bank Japan Logo"
                 className="w-full h-full object-contain rounded-md"
               />
@@ -164,11 +164,11 @@ export const DonationSection: React.FC<DonationSectionProps> = ({ lang, onOpenDo
             </div>
           </div>
 
-          {/* Stripe / Visa / Mastercard Brand Logo */}
+          {/* Stripe / Visa / Mastercard WebP Brand Logo */}
           <div className="flex items-center gap-3.5">
             <div className="w-12 h-10 rounded-xl bg-white border border-[#004d2c]/15 p-1 flex items-center justify-center shrink-0 shadow-xs">
               <img
-                src="/Stripe-Visa-and-Mastercard-are-close-to-launching-a-joint-stablecoin-platform-800x418.jpg"
+                src="/stripe-visa.webp"
                 alt="Stripe Visa Mastercard Logo"
                 className="w-full h-full object-contain rounded-md"
               />

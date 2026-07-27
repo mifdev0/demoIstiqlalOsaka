@@ -142,7 +142,7 @@ export const DonationModal: React.FC<DonationModalProps> = ({
                 />
               </div>
 
-              {/* Payment Method Selector with Real Brand Logos */}
+              {/* Payment Method Selector with Real WebP Logos */}
               <div>
                 <label className="block text-xs font-bold text-[#111827]/70 uppercase tracking-wider mb-2">
                   {t.donation.paymentMethod}
@@ -165,7 +165,7 @@ export const DonationModal: React.FC<DonationModalProps> = ({
                     />
                     <div className="w-12 h-10 rounded-xl bg-white border border-[#004d2c]/20 p-1 flex items-center justify-center shrink-0">
                       <img
-                        src="/yucho.png"
+                        src="/yucho.webp"
                         alt="Yucho Bank Japan"
                         className="w-full h-full object-contain"
                       />
@@ -208,7 +208,7 @@ export const DonationModal: React.FC<DonationModalProps> = ({
                     </div>
                   </label>
 
-                  {/* Stripe / Visa / Mastercard Option */}
+                  {/* Stripe Option */}
                   <label
                     className={`flex items-center gap-3 p-3.5 rounded-2xl border cursor-pointer transition-all ${
                       paymentType === 'stripe'
@@ -225,7 +225,7 @@ export const DonationModal: React.FC<DonationModalProps> = ({
                     />
                     <div className="w-12 h-10 rounded-xl bg-white border border-[#004d2c]/20 p-1 flex items-center justify-center shrink-0">
                       <img
-                        src="/Stripe-Visa-and-Mastercard-are-close-to-launching-a-joint-stablecoin-platform-800x418.jpg"
+                        src="/stripe-visa.webp"
                         alt="Stripe Visa Mastercard"
                         className="w-full h-full object-contain"
                       />

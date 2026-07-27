@@ -13,12 +13,12 @@ export const Hero: React.FC<HeroProps> = ({ lang, onOpenDonateModal }) => {
 
   return (
     <section id="home" className="relative w-full min-h-[85vh] flex flex-col justify-center pt-24 pb-12 lg:py-16 overflow-hidden bg-[#003820]">
-      {/* Full-bleed Real Photo Background with High Opacity on Mobile */}
+      {/* Full-bleed Real Photo Background (Ultra-optimized WebP format) */}
       <div className="absolute inset-0 z-0">
         <div
           className="bg-cover bg-center w-full h-full opacity-85 sm:opacity-65"
           style={{
-            backgroundImage: `url('/masjid-istiqlal-osaka-hero-new.png')`,
+            backgroundImage: `url('/masjid-istiqlal-osaka-hero-new.webp')`,
           }}
         />
         {/* Soft Emerald Gradient Overlay for Text Legibility */}
@@ -27,7 +27,7 @@ export const Hero: React.FC<HeroProps> = ({ lang, onOpenDonateModal }) => {
       </div>
 
       <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 w-full grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
-        {/* Left Content - Clean & Direct Typography Without AI Pill Badges */}
+        {/* Left Content */}
         <div className="lg:col-span-8 flex flex-col items-start gap-4 text-left">
           <h1 className="font-montserrat text-2xl sm:text-4xl lg:text-5xl font-bold text-[#faf8f5] leading-[1.2] tracking-tight drop-shadow-lg">
             Masjid Istiqlal <span className="text-[#d97706]">Osaka</span>
@@ -38,7 +38,7 @@ export const Hero: React.FC<HeroProps> = ({ lang, onOpenDonateModal }) => {
           </p>
 
           <div className="pt-2 flex flex-col sm:flex-row gap-3 w-full sm:w-auto">
-            {/* Signature Arch Shaped Primary CTA */}
+            {/* Primary CTA */}
             <button
               onClick={onOpenDonateModal}
               className="w-full sm:w-auto justify-center bg-[#d97706] hover:bg-[#c2410c] text-white px-6 py-3 rounded-t-2xl rounded-b-md font-montserrat text-xs font-bold uppercase tracking-wider transition-all duration-300 shadow-xl flex items-center hover:-translate-y-0.5 active:translate-y-0"
@@ -55,11 +55,11 @@ export const Hero: React.FC<HeroProps> = ({ lang, onOpenDonateModal }) => {
           </div>
         </div>
 
-        {/* Right Architectural Arch Frame Feature */}
+        {/* Right Architectural Arch Frame Feature (WebP Optimized) */}
         <div className="hidden lg:flex lg:col-span-4 justify-end items-center">
           <div className="relative w-64 h-80 rounded-t-[120px] rounded-b-2xl border-2 border-[#d97706]/40 overflow-hidden shadow-xl">
             <img
-              src="/masjid-istiqlal-osaka-hero-new.png"
+              src="/masjid-istiqlal-osaka-hero-new.webp"
               alt="Masjid Istiqlal Osaka Mihrab"
               className="w-full h-full object-cover"
             />
