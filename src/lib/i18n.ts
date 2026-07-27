@@ -7,6 +7,7 @@ export interface Translation {
     donation: string;
     schedule: string;
     transparency: string;
+    videos: string;
     admin: string;
     donateNow: string;
   };
@@ -58,6 +59,17 @@ export interface Translation {
       pendidikan: string;
       budaya: string;
     };
+  };
+  videos: {
+    badge: string;
+    title: string;
+    subtitle: string;
+    video1Title: string;
+    video1Desc: string;
+    video2Title: string;
+    video2Desc: string;
+    video3Title: string;
+    video3Desc: string;
   };
   visitors: {
     badge: string;
@@ -116,6 +128,7 @@ export const translations: Record<Language, Translation> = {
       news: 'Berita',
       donation: 'Donasi',
       transparency: 'Keuangan',
+      videos: 'Edukasi',
       admin: 'Admin',
       donateNow: 'Donasi Sekarang',
     },
@@ -167,6 +180,17 @@ export const translations: Record<Language, Translation> = {
         pendidikan: 'Kajian & Pendidikan',
         budaya: 'Kebudayaan & Diaspora',
       },
+    },
+    videos: {
+      badge: 'Media Pembelajaran & Dakwah',
+      title: 'Kajian & Edukasi Keislaman',
+      subtitle: 'Dokumentasi kajian ilmu, bimbingan ibadah, dan panduan dakwah diaspora muslim di Jepang.',
+      video1Title: 'Langkah Awal Memahami Keislaman & Bimbingan Ibadah',
+      video1Desc: 'Sesi pengenalan dasar Islam dan panduan praktis ibadah sehari-hari di perantauan.',
+      video2Title: 'Kajian Ukhuwah & Dakwah Diaspora di Osaka',
+      video2Desc: 'Ceramah tausiyah penguat iman dan pentingnya menjaga ukhuwah Islamiyah di Jepang.',
+      video3Title: 'Panduan Kehidupan Halal & Adab Muslim di Jepang',
+      video3Desc: 'Edukasi praktis seputar gaya hidup halal, toleransi, dan integrasi sosial di Kansai.',
     },
     visitors: {
       badge: 'Terbuka Untuk Umum',
@@ -223,6 +247,7 @@ export const translations: Record<Language, Translation> = {
       news: 'News',
       donation: 'Donate',
       transparency: 'Finance',
+      videos: 'Education',
       admin: 'Admin',
       donateNow: 'Donate Now',
     },
@@ -274,6 +299,17 @@ export const translations: Record<Language, Translation> = {
         pendidikan: 'Education & Study',
         budaya: 'Culture & Diaspora',
       },
+    },
+    videos: {
+      badge: 'Educational & Dawah Media',
+      title: 'Islamic Lectures & Education',
+      subtitle: 'Documentation of Islamic study sessions, worship guides, and diaspora dawah in Japan.',
+      video1Title: 'Fundamental Islamic Understanding & Worship Guide',
+      video1Desc: 'Introductory session on basic Islamic principles and practical worship tips abroad.',
+      video2Title: 'Brotherhood Gathering & Diaspora Dawah in Osaka',
+      video2Desc: 'Inspiring lecture strengthening faith and unity among Muslims in Japan.',
+      video3Title: 'Halal Living Guide & Muslim Etiquette in Japan',
+      video3Desc: 'Practical education on halal lifestyle, tolerance, and social integration in Kansai.',
     },
     visitors: {
       badge: 'Open to Everyone',
@@ -330,6 +366,7 @@ export const translations: Record<Language, Translation> = {
       news: 'ニュース',
       donation: '寄付',
       transparency: '財務',
+      videos: '学習動画',
       admin: '管理者',
       donateNow: '今すぐ寄付する',
     },
@@ -381,6 +418,17 @@ export const translations: Record<Language, Translation> = {
         pendidikan: '講座・教育',
         budaya: '文化・交流',
       },
+    },
+    videos: {
+      badge: '学習・動画メディア',
+      title: 'イスラム学習＆講座動画',
+      subtitle: 'モスクでの勉強会、礼拝の基礎、日本でのハラール生活講座の動画アーカイブ。',
+      video1Title: 'イスラムの基本理解と礼拝ガイド',
+      video1Desc: '海外での日常生活に役立つイスラムの基礎知識と礼拝の実践ガイド。',
+      video2Title: '大阪におけるムスリム交流と布教活動',
+      video2Desc: '信仰を深め、在日ムスリムコミュニティの絆を強める講座動画。',
+      video3Title: '日本でのハラール生活とマナーガイド',
+      video3Desc: '関西エリアでのハラールライフスタイル、地域社会との調和に関する講座。',
     },
     visitors: {
       badge: '一般公開中',
@@ -437,6 +485,7 @@ export const translations: Record<Language, Translation> = {
       news: 'الأخبار',
       donation: 'التبرع',
       transparency: 'المالية',
+      videos: 'التعليم',
       admin: 'التحكم',
       donateNow: 'تبرع الآن',
     },
@@ -488,6 +537,17 @@ export const translations: Record<Language, Translation> = {
         pendidikan: 'الدروس والتعليم',
         budaya: 'الثقافة والجالية',
       },
+    },
+    videos: {
+      badge: 'الوسائط التعليمية والدعوية',
+      title: 'محاضرات ودروس إسلامية',
+      subtitle: 'توثيق الدروس العلمية وإرشادات العبادة ودليل الحياة الحلال للمسلمين في اليابان.',
+      video1Title: 'الفهم الأساسي للإسلام ودليل العبادة',
+      video1Desc: 'جلسة تعريفية بأساسيات الإسلام وإرشادات علمية للعبادة في المغترب.',
+      video2Title: 'محاضرات الأخوة والدعوة في أوساكا',
+      video2Desc: 'محاضرة إيمانية لتعزيز الإيمان وتقوية روابط الأخوة بين المسلمين في اليابان.',
+      video3Title: 'دليل الحياة الحلال والآداب في اليابان',
+      video3Desc: 'تعليم عملي حول نمط الحياة الحلال والتكيف الاجتماعي في منطقة كانساي.',
     },
     visitors: {
       badge: 'مفتوح للجميع',

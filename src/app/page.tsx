@@ -8,6 +8,7 @@ import { VisitorsGuide } from '@/components/VisitorsGuide';
 import { DonationSection } from '@/components/DonationSection';
 import { DonationModal } from '@/components/DonationModal';
 import { NewsPortal } from '@/components/NewsPortal';
+import { VideoPortal } from '@/components/VideoPortal';
 import { TransparencySection } from '@/components/TransparencySection';
 import { Footer } from '@/components/Footer';
 import { Language } from '@/lib/i18n';
@@ -46,6 +47,9 @@ export default function Home() {
         {/* News Portal */}
         <NewsPortal lang={lang} />
 
+        {/* Educational YouTube Videos Portal */}
+        <VideoPortal lang={lang} />
+
         {/* Donation Portal */}
         <DonationSection
           lang={lang}
@@ -55,7 +59,7 @@ export default function Home() {
         {/* Financial Transparency */}
         <TransparencySection lang={lang} />
 
-        {/* Visitors Guide & Interactive Google Map (Reverted back to bottom right before Footer) */}
+        {/* Visitors Guide & Interactive Google Map */}
         <VisitorsGuide lang={lang} />
       </main>
 
