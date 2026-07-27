@@ -2,7 +2,7 @@
 
 @theme {
   --color-brand-emerald: #004d2c;
-  --color-brand-[#003820]: #003820;
+  --color-brand-dark: #003820;
   --color-brand-[#d97706]: #d97706;
   --color-brand-[#c2410c]: #c2410c;
   --color-brand-cream: #faf8f5;
@@ -11,6 +11,7 @@
   --font-cinzel: 'Cinzel', serif;
   --font-montserrat: 'Montserrat', sans-serif;
   --font-inter: 'Inter', sans-serif;
+  --font-sawarabi: 'Sawarabi Mincho', serif;
 }
 
 :root {
@@ -23,30 +24,67 @@ body {
   color: var(--foreground);
   font-family: 'Inter', system-ui, -apple-system, sans-serif;
   overflow-x: hidden;
-  /* Subtle Japanese Seigaiha wave pattern texture */
-  background-image: radial-gradient(circle at 100% 150%, #004d2c 0, #004d2c 1.5px, transparent 2px),
-    radial-gradient(circle at 0 150%, #004d2c 0, #004d2c 1.5px, transparent 2px),
-    radial-gradient(circle at 50% 100%, #004d2c 0, #004d2c 1.5px, transparent 2px);
-  background-size: 32px 16px;
 }
 
-/* Islamic Arch Signature Mask Utility */
-.arch-clip {
-  border-top-left-radius: 9999px;
-  border-top-right-radius: 9999px;
+/* Japanese Traditional Asanoha (Hemp Leaf) & Seigaiha Water Motif Pattern */
+.japanese-asanoha-pattern {
+  background-image: 
+    radial-gradient(circle at 50% 50%, rgba(0, 77, 44, 0.08) 2px, transparent 2px),
+    linear-gradient(to right, rgba(217, 119, 6, 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(217, 119, 6, 0.04) 1px, transparent 1px);
+  background-size: 32px 32px;
 }
 
-.arch-large {
-  border-top-left-radius: 120px;
-  border-top-right-radius: 120px;
+.japanese-emerald-crest {
+  background-image: radial-gradient(circle at 100% 150%, #004d2c 0, #004d2c 2px, transparent 3px),
+    radial-gradient(circle at 0 150%, #004d2c 0, #004d2c 2px, transparent 3px),
+    radial-gradient(circle at 50% 100%, #004d2c 0, #004d2c 2px, transparent 3px);
+  background-size: 40px 20px;
+  opacity: 0.07;
 }
 
-/* Japanese & Islamic Subtle Pattern Overlay */
-.japanese-subtle-bg {
-  background-image: radial-gradient(#004d2c 0.6px, transparent 0.6px), radial-gradient(#d97706 0.6px, transparent 0.6px);
-  background-size: 24px 24px;
-  background-position: 0 0, 12px 12px;
-  opacity: 0.03;
+/* Smooth Micro-animations & Transitions */
+@keyframes floatSlow {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-8px) rotate(1deg); }
+}
+
+@keyframes pulseGlow {
+  0%, 100% { opacity: 0.6; transform: scale(1); }
+  50% { opacity: 0.9; transform: scale(1.04); }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-float-slow {
+  animation: floatSlow 6s ease-in-out infinite;
+}
+
+.animate-pulse-glow {
+  animation: pulseGlow 4s ease-in-out infinite;
+}
+
+.animate-fade-[#004d2c]-up {
+  animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Card Smooth Lift Hover Effect */
+.hover-lift {
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.4s ease;
+}
+
+.hover-lift:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 30px -10px rgba(0, 77, 44, 0.12);
 }
 
 /* Custom Scrollbar */

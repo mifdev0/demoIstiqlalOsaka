@@ -1,7 +1,7 @@
 'use client';
 
-import React from 'react';
-import { ArrowUpRight } from 'lucide-react';
+import React, { useState } from 'react';
+import { ArrowRight, Sparkles } from 'lucide-react';
 import { Language, translations } from '@/lib/i18n';
 import { mockArticles, Article } from '@/lib/supabase';
 
@@ -11,16 +11,17 @@ interface NewsPortalProps {
 
 export const NewsPortal: React.FC<NewsPortalProps> = ({ lang }) => {
   const t = translations[lang];
-  const [activeArticle, setActiveArticle] = React.useState<Article | null>(null);
+  const [activeArticle, setActiveArticle] = useState<Article | null>(null);
 
   return (
-    <section id="news" className="py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+    <section id="news" className="py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full relative">
       {/* Editorial Section Header */}
       <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-4 border-b border-[#004d2c]/15 pb-6">
         <div className="space-y-2">
-          <span className="text-[#d97706] font-bold text-xs uppercase tracking-[0.3em] font-inter">
-            {t.news.subtitle}
-          </span>
+          <div className="inline-flex items-center gap-1.5 text-xs font-bold text-[#d97706] uppercase tracking-[0.25em] font-inter">
+            <Sparkles className="w-3.5 h-3.5" />
+            <span>{t.news.subtitle}</span>
+          </div>
           <h2 className="font-montserrat font-bold text-3xl sm:text-4xl text-[#004d2c]">
             {t.news.title}
           </h2>
@@ -28,14 +29,14 @@ export const NewsPortal: React.FC<NewsPortalProps> = ({ lang }) => {
 
         <a
           href="#news"
-          className="text-[#004d2c] font-montserrat font-bold text-xs uppercase tracking-wider hover:text-[#d97706] transition-all flex items-center gap-1 w-fit"
+          className="text-[#004d2c] font-montserrat font-bold text-xs uppercase tracking-wider hover:text-[#d97706] transition-all flex items-center gap-1 w-fit group"
         >
           <span>{t.news.categories.all}</span>
-          <ArrowUpRight className="w-4 h-4 text-[#d97706]" />
+          <ArrowRight className="w-4 h-4 text-[#d97706] group-hover:translate-x-1 transition-transform" />
         </a>
       </div>
 
-      {/* Editorial Asymmetric Arch Crop Card Grid */}
+      {/* Editorial Asymmetric Arch Crop Card Grid with Smooth Hover Lift */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
         {mockArticles.map((article) => {
           const title =
@@ -63,18 +64,22 @@ export const NewsPortal: React.FC<NewsPortalProps> = ({ lang }) => {
             <div
               key={article.id}
               onClick={() => setActiveArticle(article)}
-              className="group cursor-pointer flex flex-col justify-between"
+              className="group cursor-pointer flex flex-col justify-between hover-lift p-2 rounded-t-[104px] rounded-b-2xl transition-all"
             >
               <div>
-                {/* Mihrab Arch Shape Photo Crop Frame */}
+                {/* Mihrab Arch Shape Photo Crop Frame with Japanese Corner Accent */}
                 <div className="relative overflow-hidden rounded-t-[100px] rounded-b-2xl aspect-[4/5] mb-6 shadow-md border-2 border-[#004d2c]/10 group-hover:border-[#004d2c] transition-all">
                   <img
                     src={article.featured_image_url}
                     alt={title}
-                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                   />
                   <div className="absolute top-5 left-5 px-3.5 py-1.5 bg-[#004d2c] text-white text-[11px] font-bold rounded-t-xl rounded-b-sm uppercase tracking-wider font-inter shadow-sm">
                     {categoryLabel}
+                  </div>
+                  {/* Subtle Japanese Hanko Kanji Watermark in Corner */}
+                  <div className="absolute bottom-3 right-3 text-white/40 font-bold text-xs font-montserrat tracking-widest pointer-events-none">
+                    お知らせ
                   </div>
                 </div>
 
@@ -87,9 +92,9 @@ export const NewsPortal: React.FC<NewsPortalProps> = ({ lang }) => {
                 </p>
               </div>
 
-              <div className="pt-4 flex items-center gap-2 text-xs font-bold text-[#d97706] font-montserrat uppercase tracking-wider group-hover:translate-x-1 transition-transform">
+              <div className="pt-4 flex items-center gap-2 text-xs font-bold text-[#d97706] font-montserrat uppercase tracking-wider group-hover:translate-x-1.5 transition-transform">
                 <span>{t.news.readMore}</span>
-                <ArrowUpRight className="w-4 h-4 text-[#d97706]" />
+                <ArrowRight className="w-4 h-4 text-[#d97706]" />
               </div>
             </div>
           );
@@ -98,7 +103,7 @@ export const NewsPortal: React.FC<NewsPortalProps> = ({ lang }) => {
 
       {/* Article Detail Modal */}
       {activeArticle && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm">
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm animate-fade-in-up">
           <div className="bg-[#faf8f5] rounded-3xl max-w-2xl w-full p-6 sm:p-8 border border-[#004d2c]/20 shadow-2xl relative max-h-[85vh] overflow-y-auto space-y-4">
             <button
               onClick={() => setActiveArticle(null)}
