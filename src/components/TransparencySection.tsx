@@ -167,7 +167,7 @@ export const TransparencySection: React.FC<TransparencySectionProps> = ({ lang }
           </div>
         </div>
 
-        {/* Ledger Line Items & Tall High-Res Financial Trading Chart */}
+        {/* Ledger Line Items & Static Pure SVG Financial Trading Chart */}
         <div className="bg-white rounded-2xl border border-[#004d2c]/15 shadow-xs p-5 sm:p-7 space-y-8">
           <div>
             <h3 className="font-montserrat font-bold text-base text-[#004d2c] mb-4">
@@ -233,7 +233,7 @@ export const TransparencySection: React.FC<TransparencySectionProps> = ({ lang }
             </div>
           </div>
 
-          {/* TALL PROPORTIONAL TRADING FINANCIAL LINE CHART */}
+          {/* STATIC NON-INTERACTIVE TRADING FINANCIAL LINE CHART */}
           <div className="pt-4 border-t border-[#004d2c]/15">
             <div className="flex items-center justify-between mb-4">
               <h4 className="font-montserrat font-bold text-xs text-[#111827] uppercase tracking-wider flex items-center gap-2">
@@ -245,7 +245,7 @@ export const TransparencySection: React.FC<TransparencySectionProps> = ({ lang }
               </span>
             </div>
 
-            {/* Trading Style Line Chart with Stable Non-Glitch Hover Targets */}
+            {/* Static Non-Interactive Trading Chart */}
             <div className="bg-[#faf8f5] rounded-xl p-5 border border-[#004d2c]/15 relative overflow-hidden">
               {/* Background Grid Lines */}
               <div className="absolute inset-0 flex flex-col justify-between p-6 opacity-15 pointer-events-none">
@@ -255,8 +255,8 @@ export const TransparencySection: React.FC<TransparencySectionProps> = ({ lang }
                 <div className="w-full border-b border-dashed border-[#004d2c]" />
               </div>
 
-              {/* SVG Curve Line Chart */}
-              <div className="relative h-56 w-full">
+              {/* Static SVG Curve Line Chart */}
+              <div className="relative h-56 w-full pointer-events-none">
                 <svg className="w-full h-full overflow-visible" viewBox="0 0 560 200">
                   <defs>
                     <linearGradient id="emeraldGrad" x1="0" y1="0" x2="0" y2="1">
@@ -281,24 +281,20 @@ export const TransparencySection: React.FC<TransparencySectionProps> = ({ lang }
                     strokeLinejoin="round"
                   />
 
-                  {/* Stable Hover Target Data Points (Large Transparent Hit Area prevents glitch) */}
+                  {/* Static Fixed Nodes & Permanent Labels (No Hover Transition) */}
                   {tradingPoints.map((pt, idx) => (
-                    <g key={idx} className="group cursor-pointer">
-                      {/* Large invisible hit area for smooth hover */}
-                      <circle cx={pt.x} cy={pt.y} r="18" fill="transparent" />
-                      {/* Visible Node */}
+                    <g key={idx}>
                       <circle
                         cx={pt.x}
                         cy={pt.y}
-                        r="6"
-                        className="fill-[#faf8f5] stroke-[#004d2c] stroke-[3.5] transition-transform duration-200 group-hover:scale-125 pointer-events-none"
+                        r="5"
+                        className="fill-[#faf8f5] stroke-[#004d2c] stroke-[3]"
                       />
-                      {/* Floating Tooltip Label */}
                       <text
                         x={pt.x}
-                        y={pt.y - 14}
+                        y={pt.y - 12}
                         textAnchor="middle"
-                        className="text-[11px] font-mono font-extrabold fill-[#004d2c] pointer-events-none"
+                        className="text-[11px] font-mono font-extrabold fill-[#004d2c]"
                       >
                         ¥{pt.value}M
                       </text>
