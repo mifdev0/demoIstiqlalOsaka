@@ -97,14 +97,14 @@ export const TransparencySection: React.FC<TransparencySectionProps> = ({ lang }
   const [selectedMonthKey, setSelectedMonthKey] = useState<string>('juli_2026');
   const selectedData = monthlyData[selectedMonthKey];
 
-  // Trading/Stock Style Financial Trend Chart Data (Feb - Jul)
+  // Height proportional Trading Chart Data (Feb - Jul)
   const tradingPoints = [
-    { month: 'Feb', value: 3.4, net: '+¥1.9M', x: 20, y: 110 },
-    { month: 'Mar', value: 6.5, net: '+¥3.7M', x: 100, y: 30 },
-    { month: 'Apr', value: 4.8, net: '+¥2.8M', x: 180, y: 70 },
-    { month: 'Mei', value: 5.1, net: '+¥2.9M', x: 260, y: 62 },
-    { month: 'Jun', value: 3.95, net: '+¥2.3M', x: 340, y: 92 },
-    { month: 'Jul', value: 4.2, net: '+¥2.3M', x: 420, y: 85 },
+    { month: 'Feb', value: 3.4, net: '+¥1.9M', x: 30, y: 150 },
+    { month: 'Mar', value: 6.5, net: '+¥3.7M', x: 130, y: 30 },
+    { month: 'Apr', value: 4.8, net: '+¥2.8M', x: 230, y: 95 },
+    { month: 'Mei', value: 5.1, net: '+¥2.9M', x: 330, y: 83 },
+    { month: 'Jun', value: 3.95, net: '+¥2.3M', x: 430, y: 128 },
+    { month: 'Jul', value: 4.2, net: '+¥2.3M', x: 530, y: 118 },
   ];
 
   return (
@@ -141,14 +141,13 @@ export const TransparencySection: React.FC<TransparencySectionProps> = ({ lang }
           </div>
         </div>
 
-        {/* HERO: Saldo Kas Terakumulasi (Compact Friendly Dimensions) */}
+        {/* HERO: Saldo Kas Terakumulasi */}
         <div className="bg-[#003820] text-white rounded-t-3xl rounded-b-xl p-6 sm:p-8 mb-8 shadow-xl border-b-4 border-[#d97706] relative overflow-hidden">
           <div className="relative z-10 flex flex-col sm:flex-row sm:items-center justify-between gap-6">
             <div className="space-y-1.5">
               <span className="text-[11px] font-bold text-[#d97706] uppercase tracking-wider font-inter block">
                 Saldo Kas Terakumulasi (MIO Ledger)
               </span>
-              {/* Compact Readable Typography for Balance */}
               <div className="font-mono font-bold text-3xl sm:text-4xl text-[#faf8f5] tracking-tight">
                 ¥{selectedData.balance_jpy.toLocaleString('ja-JP')}
               </div>
@@ -168,7 +167,7 @@ export const TransparencySection: React.FC<TransparencySectionProps> = ({ lang }
           </div>
         </div>
 
-        {/* Ledger Line Items & Financial Trading Line Chart */}
+        {/* Ledger Line Items & Tall High-Res Financial Trading Chart */}
         <div className="bg-white rounded-2xl border border-[#004d2c]/15 shadow-xs p-5 sm:p-7 space-y-8">
           <div>
             <h3 className="font-montserrat font-bold text-base text-[#004d2c] mb-4">
@@ -177,7 +176,6 @@ export const TransparencySection: React.FC<TransparencySectionProps> = ({ lang }
 
             {/* Hairline Divider Ledger List */}
             <div className="divide-y divide-[#004d2c]/15 border-y border-[#004d2c]/15 text-xs font-inter">
-              {/* Line Item 1: Total Pemasukan */}
               <div className="py-3.5 flex flex-col sm:flex-row sm:items-center justify-between gap-1.5">
                 <div className="flex items-center gap-2.5">
                   <div className="w-7 h-7 rounded-md bg-[#004d2c]/10 text-[#004d2c] flex items-center justify-center shrink-0">
@@ -199,7 +197,6 @@ export const TransparencySection: React.FC<TransparencySectionProps> = ({ lang }
                 </div>
               </div>
 
-              {/* Line Item 2: Total Pengeluaran */}
               <div className="py-3.5 flex flex-col sm:flex-row sm:items-center justify-between gap-1.5">
                 <div className="flex items-center gap-2.5">
                   <div className="w-7 h-7 rounded-md bg-[#c2410c]/10 text-[#c2410c] flex items-center justify-center shrink-0">
@@ -221,7 +218,6 @@ export const TransparencySection: React.FC<TransparencySectionProps> = ({ lang }
                 </div>
               </div>
 
-              {/* Line Item 3: Surplus Bersih */}
               <div className="py-3.5 flex flex-col sm:flex-row sm:items-center justify-between gap-1.5 bg-[#faf8f5]/80 px-3 -mx-3 rounded-lg">
                 <div>
                   <span className="font-bold text-[#004d2c] text-sm block font-montserrat">
@@ -237,49 +233,50 @@ export const TransparencySection: React.FC<TransparencySectionProps> = ({ lang }
             </div>
           </div>
 
-          {/* TRADING-STYLE FINANCIAL LINE CHART (6 Bulan Terakhir) */}
+          {/* TALL PROPORTIONAL TRADING FINANCIAL LINE CHART */}
           <div className="pt-4 border-t border-[#004d2c]/15">
             <div className="flex items-center justify-between mb-4">
               <h4 className="font-montserrat font-bold text-xs text-[#111827] uppercase tracking-wider flex items-center gap-2">
                 <TrendingUp className="w-4 h-4 text-[#004d2c]" />
-                <span>Grafik Tren Kas 6 Bulan Terakhir (Trading Chart Style)</span>
+                <span>Grafik Tren Kas 6 Bulan Terakhir (Pergerakan Infaq)</span>
               </h4>
               <span className="text-[10px] font-semibold text-[#004d2c] bg-[#004d2c]/10 px-2 py-0.5 rounded-md font-mono">
-                Pemasukan Infaq (Yen)
+                Satuan: Juta Yen (JPY)
               </span>
             </div>
 
-            {/* Trading Style Line Chart with Gradient Fill */}
-            <div className="bg-[#faf8f5] rounded-xl p-4 border border-[#004d2c]/10 relative overflow-hidden">
+            {/* Trading Style Line Chart with Natural Tall Proportion (Height 220px) */}
+            <div className="bg-[#faf8f5] rounded-xl p-5 border border-[#004d2c]/15 relative overflow-hidden">
               {/* Background Grid Lines */}
-              <div className="absolute inset-0 flex flex-col justify-between p-4 opacity-20 pointer-events-none">
+              <div className="absolute inset-0 flex flex-col justify-between p-6 opacity-15 pointer-events-none">
+                <div className="w-full border-b border-dashed border-[#004d2c]" />
                 <div className="w-full border-b border-dashed border-[#004d2c]" />
                 <div className="w-full border-b border-dashed border-[#004d2c]" />
                 <div className="w-full border-b border-dashed border-[#004d2c]" />
               </div>
 
-              {/* SVG Curve Line Chart */}
-              <div className="relative h-36 w-full">
-                <svg className="w-full h-full overflow-visible" viewBox="0 0 440 140" preserveAspectRatio="none">
+              {/* High-Aspect SVG Curve Line Chart */}
+              <div className="relative h-56 w-full">
+                <svg className="w-full h-full overflow-visible" viewBox="0 0 560 200">
                   <defs>
                     <linearGradient id="emeraldGrad" x1="0" y1="0" x2="0" y2="1">
-                      <stop offset="0%" stopColor="#004d2c" stopOpacity="0.35" />
+                      <stop offset="0%" stopColor="#004d2c" stopOpacity="0.4" />
                       <stop offset="100%" stopColor="#004d2c" stopOpacity="0.0" />
                     </linearGradient>
                   </defs>
 
                   {/* Shaded Area Under Curve */}
                   <path
-                    d="M 20 110 L 100 30 L 180 70 L 260 62 L 340 92 L 420 85 L 420 140 L 20 140 Z"
+                    d="M 30 150 L 130 30 L 230 95 L 330 83 L 430 128 L 530 118 L 530 190 L 30 190 Z"
                     fill="url(#emeraldGrad)"
                   />
 
-                  {/* Green Trading Line */}
+                  {/* Thick Green Trading Line */}
                   <path
-                    d="M 20 110 L 100 30 L 180 70 L 260 62 L 340 92 L 420 85"
+                    d="M 30 150 L 130 30 L 230 95 L 330 83 L 430 128 L 530 118"
                     fill="none"
                     stroke="#004d2c"
-                    strokeWidth="3"
+                    strokeWidth="3.5"
                     strokeLinecap="round"
                     strokeLinejoin="round"
                   />
@@ -290,15 +287,15 @@ export const TransparencySection: React.FC<TransparencySectionProps> = ({ lang }
                       <circle
                         cx={pt.x}
                         cy={pt.y}
-                        r="5"
-                        className="fill-[#faf8f5] stroke-[#004d2c] stroke-[3] group-hover:scale-150 transition-all"
+                        r="6"
+                        className="fill-[#faf8f5] stroke-[#004d2c] stroke-[3.5] group-hover:scale-150 transition-all"
                       />
-                      {/* Hover Tooltip Value */}
+                      {/* Floating Tooltip Label */}
                       <text
                         x={pt.x}
                         y={pt.y - 12}
                         textAnchor="middle"
-                        className="text-[9px] font-mono font-bold fill-[#004d2c] opacity-80 group-hover:opacity-100 transition-opacity"
+                        className="text-[11px] font-mono font-extrabold fill-[#004d2c]"
                       >
                         ¥{pt.value}M
                       </text>
@@ -308,11 +305,11 @@ export const TransparencySection: React.FC<TransparencySectionProps> = ({ lang }
               </div>
 
               {/* Month Labels & Net Badges */}
-              <div className="flex justify-between items-center pt-3 px-2 border-t border-[#004d2c]/10 text-center font-inter">
+              <div className="flex justify-between items-center pt-4 px-3 border-t border-[#004d2c]/10 text-center font-inter">
                 {tradingPoints.map((pt, idx) => (
                   <div key={idx} className="flex flex-col items-center">
-                    <span className="text-[11px] font-bold text-[#111827]">{pt.month}</span>
-                    <span className="text-[9px] font-mono text-[#d97706] font-semibold">{pt.net}</span>
+                    <span className="text-xs font-bold text-[#111827]">{pt.month}</span>
+                    <span className="text-[10px] font-mono text-[#d97706] font-semibold">{pt.net}</span>
                   </div>
                 ))}
               </div>
