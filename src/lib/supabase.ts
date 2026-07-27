@@ -58,35 +58,19 @@ export interface Donation {
   amount: number;
   currency: 'IDR' | 'JPY';
   payment_method: string;
-  payment_status: 'pending' | 'paid' | 'verified';
-  proof_of_transfer_url?: string;
-  transaction_ref: string;
   is_anonymous: boolean;
-  message?: string;
+  proof_url?: string;
+  status: 'pending' | 'verified' | 'rejected';
   created_at: string;
 }
 
-export interface TransparencyReport {
-  id: string;
-  period: string;
-  title_id: string;
-  title_en: string;
-  title_ja: string;
-  title_ar: string;
-  income_jpy: number;
-  income_idr: number;
-  expense_jpy: number;
-  expense_idr: number;
-  file_pdf_url: string;
-}
-
-// Mock fallback data with full multilingual support for ID, EN, JA, AR
+// Highly reliable high-resolution Unsplash photo URLs for Mosque & Ramadan Iftar
 export const mockPrograms: DonationProgram[] = [
   {
     id: 'prog-1',
-    slug: 'operasional-masjid-2026',
+    slug: 'wakaf-operasional-masjid',
     title_id: 'Wakaf Operasional & Pemeliharaan Masjid Istiqlal Osaka',
-    title_en: 'Operational & Maintenance Waqf for Masjid Istiqlal Osaka',
+    title_en: 'Wakaf Maintenance & Operations Fund for Masjid Istiqlal Osaka',
     title_ja: '大阪イスティクラルモスク維持・運営維持寄付基金',
     title_ar: 'وقف التشغيل والصيانة لمسجد استقلال أوساكا',
     description_id: 'Dukungan rutin untuk kebersihan, listrik, pemanas pendingin ruangan, dan utilitas rumah ibadah.',
@@ -97,7 +81,7 @@ export const mockPrograms: DonationProgram[] = [
     current_amount_jpy: 3420000,
     target_amount_idr: 550000000,
     current_amount_idr: 376000000,
-    banner_url: 'https://images.unsplash.com/photo-1590076175571-4b5459efb099?auto=format&fit=crop&w=1200&q=80',
+    banner_url: 'https://images.unsplash.com/photo-1542810634-71277d95dcbb?auto=format&fit=crop&w=1200&q=80',
     is_active: true,
     start_date: '2026-01-01',
     end_date: '2026-12-31',
@@ -117,7 +101,7 @@ export const mockPrograms: DonationProgram[] = [
     current_amount_jpy: 1680000,
     target_amount_idr: 220000000,
     current_amount_idr: 184800000,
-    banner_url: 'https://images.unsplash.com/photo-1584551246679-0daf3d275d0f?auto=format&fit=crop&w=1200&q=80',
+    banner_url: 'https://images.unsplash.com/photo-1564769625905-50e93615e769?auto=format&fit=crop&w=1200&q=80',
     is_active: true,
     start_date: '2026-02-01',
     end_date: '2026-03-30',
@@ -158,12 +142,12 @@ export const mockArticles: Article[] = [
     title_ar: 'خدمات إرشاد المسلمين الجدد والاستشارات الحلال في كانساي',
     excerpt_id: 'MIO menyediakan konsultasi keislaman, sertifikasi syahadat, serta konsultasi gaya hidup halal.',
     excerpt_en: 'MIO provides Islamic counseling, Shahada certificates, and halal lifestyle consultation.',
-    excerpt_ja: '改宗相談、シャハーダ証明書の発行、日本でのハラール生活アドバイスを行っています。',
-    excerpt_ar: 'يقدم المسجد استشارات إسلامية وشهادات إشهار الإسلام واستشارات الحياة الحلال في اليابان.',
-    content_id: 'Bagi masyarakat Jepang atau ekspatriat yang ingin mempelajari Islam secara mendalam...',
-    content_en: 'For Japanese citizens or expatriates wishing to learn more about Islam...',
-    content_ja: 'イスラム教について学びたい日本の方や在日外国人の方に向けて...',
-    content_ar: 'يقدم المركز خدمات متكاملة لكل من يرغب في التعرف على الإسلام في اليابان...',
+    excerpt_ja: '改宗相談、シャハーダ証明書の発行、日常生活でのハラール相談を受け付けています。',
+    excerpt_ar: 'يقدم المسجد استشارات إسلامية وشهادات الإشهار وعن الحياة الحلال في اليابان.',
+    content_id: 'Masjid Istiqlal Osaka berkomitmen menjadi rumah bimbingan yang ramah bagi siapapun yang ingin mempelajari Islam...',
+    content_en: 'Masjid Istiqlal Osaka is committed to providing a welcoming sanctuary for those learning Islam...',
+    content_ja: '大阪イスティクラルモスクは、イスラム教を学びたいすべての人々を温かく迎えます...',
+    content_ar: 'يلتزم مسجد استقلال أوساكا بتقديم بيئة مرحبة بكل من يرغب في التعرف على الإسلام...',
     author_name: 'Tim Syariah MIO',
     is_published: true,
     published_at: '2026-07-15',
@@ -171,24 +155,24 @@ export const mockArticles: Article[] = [
   },
   {
     id: 'art-3',
-    slug: 'bantuan-kemanusiaan-bencana-jepang',
-    category: 'sosial',
-    featured_image_url: 'https://images.unsplash.com/photo-1469571486292-0ba58a3f068b?auto=format&fit=crop&w=800&q=80',
-    title_id: 'Aksi Tanggap Disaster Response & Dapur Umum MIO di Osaka',
-    title_en: 'Disaster Response & Community Soup Kitchen by MIO Osaka',
-    title_ja: '大阪イスティクラルモスクによる災害支援・フードバンク活動',
-    title_ar: 'حملات الاستجابة للكوارث والإغاثة الإنسانية في أوساكا',
-    excerpt_id: 'Bentuk kepedulian sosial muslim Indonesia untuk warga terdampak bencana alam di Jepang.',
-    excerpt_en: 'Demonstrating Indonesian Muslim solidarity for natural disaster victims in Japan.',
-    excerpt_ja: '日本の自然災害被災者への緊急支援とフードバンク運動。',
-    excerpt_ar: 'مبادرات التضامن الإغاثي لمساعدة المتضررين من الكوارث الطبيعية في اليابان.',
-    content_id: 'Tim relawan MIO siap siaga menyalurkan bantuan logistik makanan halal dan tempat perlindungan sementara...',
-    content_en: 'MIO volunteer team stands ready to distribute halal food packages and temporary shelter...',
-    content_ja: 'MIOボランティアチームは、ハラール食料支援や避難所支援を迅速に行っています...',
-    content_ar: 'يقوم فريق المتطوعين بتوزيع المساعدات الإغاثية والوجبات الغذائية...',
-    author_name: 'Tim Relawan MIO',
+    slug: 'kelas-bahasa-jepang-gratis-mio',
+    category: 'budaya',
+    featured_image_url: 'https://images.unsplash.com/photo-1528164344705-47542687990d?auto=format&fit=crop&w=800&q=80',
+    title_id: 'Kelas Bahasa Jepang & Adaptasi Budaya untuk Pekerja / Mahasiswa Baru',
+    title_en: 'Japanese Language & Cultural Adaptation Class for New Diaspora',
+    title_ja: '新来日者のための日本語講座＆生活適応クラス',
+    title_ar: 'دروس اللغة اليابانية والتكيف الثقافي للوافدين الجدد',
+    excerpt_id: 'Program pendampingan integrasi sosial masyarakat muslim Indonesia dengan komunitas lokal Jepang.',
+    excerpt_en: 'Social integration program bridging Indonesian Muslim diaspora with Japanese local community.',
+    excerpt_ja: '日本での生活をスムーズにスタートするための無料日本語・文化レッスン。',
+    excerpt_ar: 'برنامج الدعم الاجتماعي لدمج الجالية الإسلامية مع المجتمع الياباني المحلي.',
+    content_id: 'Dalam rangka membantu diaspora muda dan pekerja migran beradaptasi dengan kehidupan di Osaka, MIO menyelenggarakan kelas bahasa Jepang...',
+    content_en: 'To support young diaspora and migrant workers adapting to life in Osaka, MIO hosts free Japanese language classes...',
+    content_ja: '大阪での生活に早く慣れていただくため、モスクではボランティアによる日本語教室を開催しています...',
+    content_ar: 'من أجل مساعدة الشباب والجالية على التكيف مع الحياة في أوساكا، ينظم المسجد دروساً مجانية...',
+    author_name: 'Divisi Kebudayaan & Pendidikan',
     is_published: true,
-    published_at: '2026-07-02',
-    created_at: '2026-07-02',
+    published_at: '2026-07-10',
+    created_at: '2026-07-10',
   },
 ];
